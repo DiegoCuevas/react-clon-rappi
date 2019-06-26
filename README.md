@@ -1,5 +1,7 @@
 # Rappi Clone
 
+![alt text](public/rappi-logo.png)
+
 ## Awesome developers
 
 - Diego Cuevas
