@@ -30,6 +30,50 @@ test("reducer - ADD_PRODUCT", () => {
   });
 });
 
+test("reducer - REMOVE_PRODUCT", () => {
+  const initialState = {
+    cart: [0],
+    restaurants: [
+      {
+        id: 0,
+        name: "Mc Donalds",
+        description: "Healthy food"
+      }
+    ],
+    products: [
+      {
+        id: 0,
+        name: "Hamburgesa",
+        restId: 0
+      }
+    ]
+  };
+
+  const finalState = reducer(initialState, {
+    type: "REMOVE_PRODUCT",
+    payload: { id: 0 }
+  });
+
+  const expectedState = {
+    cart: [],
+    restaurants: [
+      {
+        id: 0,
+        name: "Mc Donalds",
+        description: "Healthy food"
+      }
+    ],
+    products: [
+      {
+        id: 0,
+        name: "Hamburgesa",
+        restId: 0
+      }
+    ]
+  };
+  expect(finalState).toEqual(expectedState);
+});
+
 test("reducer - RESET", () => {
   const initialState = {
     cart: [0],

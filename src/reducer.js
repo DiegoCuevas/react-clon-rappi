@@ -45,6 +45,21 @@ function reducer(state = initialState, action = {}) {
       };
     }
 
+    case "REMOVE_PRODUCT": {
+      const updatedCart = [...state.cart];
+
+      var index = updatedCart.indexOf(action.payload.id);
+
+      if (index > -1) {
+        updatedCart.splice(index, 1);
+      }
+
+      return {
+        ...state,
+        cart: updatedCart
+      };
+    }
+
     case "RESET": {
       return {
         ...state,
