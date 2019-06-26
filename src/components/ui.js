@@ -37,8 +37,7 @@ function Card({ styles, ...props }) {
         padding: "15px",
         width: "100%",
         transitionProperty: "all",
-        transitionDuration: "0.75s",
-        transitionTimingFunction: "ease-in-out",
+        transitionDuration: "0.25s",
         "&:hover": {
           cursor: "pointer",
           boxShadow: "0px 2px 5px 0px rgba(0, 0, 0, .12)"
