@@ -1,12 +1,47 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+/** @jsx jsx */
+import React from "react";
+import { render } from "react-dom";
+import { Router } from "@reach/router";
+import { Provider } from "react-redux";
+import { Global, jsx } from "@emotion/core";
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import Restaurant from "./views/restaurant";
+import Home from "./views/home";
+import Navbar from "./components/navbar";
+import store from "./store";
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+function App() {
+  return (
+    <>
+      <Global
+        styles={{
+          body: {
+            background: "#fafafa",
+            fontFamily: "'Helvetica Neue', sans-serif",
+            margin: 0
+          }
+        }}
+      />
+      <Navbar />
+      <main
+        css={{
+          maxWidth: "1000px",
+          margin: "auto"
+        }}
+      >
+        <Router>
+          <Home path="/" />
+          <Restaurant path="/restaurant" />
+        </Router>
+      </main>
+    </>
+  );
+}
+
+const $root = document.getElementById("root");
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>,
+  $root
+);
