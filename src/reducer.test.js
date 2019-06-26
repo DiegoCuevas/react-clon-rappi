@@ -30,6 +30,67 @@ test("reducer - ADD_PRODUCT", () => {
   });
 });
 
+test("reducer - LIST_RESTAURANTS", () => {
+  const initialState = {
+    cart: [],
+    restaurants: [],
+    products: []
+  };
+
+  const finalState = reducer(initialState, {
+    type: "LIST_RESTAURANTS",
+    payload: [
+      {
+        id: 3,
+        name: "restaurant example",
+        price_type: "low",
+        address: {
+          name: "Av. sSS 123",
+          latitud: "0.12",
+          longitud: "1.233"
+        }
+      },
+      {
+        id: 4,
+        name: "restaurant example",
+        price_type: "low",
+        address: {
+          name: "Av. sSS 123",
+          latitud: "0.12",
+          longitud: "1.233"
+        }
+      }
+    ]
+  });
+
+  expect(finalState).toEqual({
+    cart: [],
+    restaurants: [
+      {
+        id: 3,
+        name: "restaurant example",
+        price_type: "low",
+        address: {
+          name: "Av. sSS 123",
+          latitud: "0.12",
+          longitud: "1.233"
+        }
+      },
+      {
+        id: 4,
+        name: "restaurant example",
+        price_type: "low",
+        address: {
+          name: "Av. sSS 123",
+          latitud: "0.12",
+          longitud: "1.233"
+        }
+      }
+    ],
+    products: []
+  });
+});
+
 test("reducer - REMOVE_PRODUCT", () => {
   const initialState = {
     cart: [0],

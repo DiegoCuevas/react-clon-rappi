@@ -45,6 +45,13 @@ function reducer(state = initialState, action = {}) {
       };
     }
 
+    case "LIST_RESTAURANTS": {
+      return {
+        ...state,
+        restaurants: [...action.payload]
+      };
+    }
+
     case "REMOVE_PRODUCT": {
       const updatedCart = [...state.cart];
 
