@@ -45,6 +45,13 @@ function reducer(state = initialState, action = {}) {
       };
     }
 
+    case "RESET": {
+      return {
+        ...state,
+        cart: []
+      };
+    }
+
     default: {
       return state;
     }
