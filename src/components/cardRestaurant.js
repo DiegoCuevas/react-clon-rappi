@@ -77,7 +77,7 @@ const img = {
   borderRadius: ".5em 0 0 .5em"
 };
 
-function CardProduct() {
+function CardRestaurant() {
   return (
     <>
       <Link css={linkStyle} to="/restaurant">
@@ -120,4 +120,4 @@ function CardProduct() {
   );
 }
 
-export default CardProduct;
+export default CardRestaurant;

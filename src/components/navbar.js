@@ -13,7 +13,7 @@ const ul = {
   justifyContent: "space-between",
   alignItem: "center",
   margin: "0 auto",
-  padding: "1.5em",
+  padding: ".5em 1.5em",
   listStyle: "none",
   color: "#fff"
 };
@@ -27,13 +27,36 @@ const linkStyle = {
   }
 };
 
+const center = {
+  display: "flex",
+  alignItems: "center"
+};
+
+const img = {
+  width: "80px"
+};
+
+// mobile
+// ul Padre
+// position: relative;
+//  li login
+// display: flex;
+// justify-self: fl;
+// align-items: center;
+// position: absolute;
+// right: 16px;
+// bottom: 0;
+// top: 0;
+// margin: auto;
+
 function Nabvar() {
   return (
     <nav css={container}>
       <ul css={ul}>
-        <li>
+        <li css={center}>
           <Link css={linkStyle} to="/">
             <img
+              css={img}
               src="https://images.rappi.com/web/logo-rappi-new.svg?e=webp"
               alt="rappi"
             />
@@ -41,7 +64,7 @@ function Nabvar() {
         </li>
         <li>
           <Link css={linkStyle} to="/login">
-            Login
+            <span css={center}>Login</span>
           </Link>
         </li>
       </ul>

@@ -6,7 +6,9 @@ import ListProducts from "../components/listProducts";
 
 const header = {
   display: "flex",
-  flexDirecction: "column"
+  flexDirecction: "column",
+  paddingBottom: "14px",
+  borderBottom: "1px solid #ebebeb"
 };
 
 const title = {
@@ -30,7 +32,7 @@ const infoDelivery = {
 
 const info = {
   display: "flex",
-  flexDirecction: "columnn",
+  flexDirection: "column",
   marginRight: "30px",
   "&:firstChild": {
     color: "#7d7d7d",
@@ -42,12 +44,36 @@ const info = {
   }
 };
 
+const data = {
+  paddingLeft: "25px"
+};
+
+const restaurantImg = {
+  position: "relative",
+  width: "350px",
+  height: "150px"
+};
+
+const img = {
+  height: "100%",
+  width: "100%",
+  objectFit: "cover",
+  position: "absolute",
+  borderRadius: ".5em"
+};
+
 function Restaurant() {
   return (
     <section>
       <div css={header}>
-        <div>image</div>
-        <div>
+        <div css={restaurantImg}>
+          <img
+            css={img}
+            src="https://images.rappi.pe/restaurants_background/742-1545950757.png?d=720x720&e=webp"
+            alt="restaurant"
+          />
+        </div>
+        <div css={data}>
           <h1 css={title}>Tanta</h1>
           <span css={hours}>08:30 am - 11:30 pm</span>
           <div css={infoDelivery}>
@@ -56,7 +82,7 @@ function Restaurant() {
               <strong>S/. 5.00</strong>
             </div>
             <div css={info}>
-              <span>Entrega</span>
+              <span>Entrega:</span>
               <strong>35 min</strong>
             </div>
           </div>

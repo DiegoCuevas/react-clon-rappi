@@ -34,13 +34,15 @@ function Card({ styles, ...props }) {
       css={{
         borderRadius: ".5em",
         boxSizing: "border-box",
+        border: "1px solid #fff",
         padding: "15px",
         width: "100%",
         transitionProperty: "all",
         transitionDuration: "0.25s",
         "&:hover": {
           cursor: "pointer",
-          boxShadow: "0px 2px 5px 0px rgba(0, 0, 0, .12)"
+          border: "1px solid #e5edef",
+          boxShadow: "-1px 2px 5px 0px rgba(0,0,0,.12)"
         },
         ...styles
       }}
