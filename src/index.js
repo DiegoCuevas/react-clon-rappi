@@ -4,11 +4,13 @@ import { render } from "react-dom";
 import { Router } from "@reach/router";
 import { Provider } from "react-redux";
 import { Global, jsx } from "@emotion/core";
+
 import Login from "./views/login";
 import Restaurant from "./views/restaurant";
 import Home from "./views/home";
 import Navbar from "./components/navbar";
 import store from "./store";
+// import { useLogin } from "../action-hooks";
 
 const global = {
   body: {
