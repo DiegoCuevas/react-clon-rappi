@@ -1,6 +1,8 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { useListRestaurants } from "../action-hooks";
+import { useRestaurants, useUser } from "../selectors";
 
 import CardRestaurant from "./cardRestaurant";
 
@@ -10,11 +12,18 @@ const container = {
 };
 
 function ListRestaurants() {
+  const restaurants = useRestaurants();
+  const listRestaurants = useListRestaurants();
+
+  React.useEffect(() => {
+    listRestaurants();
+  }, []);
+
   return (
     <section css={container}>
-      <CardRestaurant />
-      <CardRestaurant />
-      <CardRestaurant />
+      {restaurants.map(restaurant => {
+        return <CardRestaurant restaurant={restaurant} key={restaurant.id} />;
+      })}
     </section>
   );
 }

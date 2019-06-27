@@ -1,6 +1,5 @@
 const API_LOGIN_URL = "http://localhost:4000/api/login";
 const API_LOGOUT_URL = "http://localhost:4000/api/logout";
-
 const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
 
 function login(user) {

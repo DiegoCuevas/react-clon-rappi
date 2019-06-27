@@ -14,11 +14,7 @@ const container = {
 };
 
 function Home() {
-  const listRestaurants = useListRestaurants();
 
-  React.useEffect(() => {
-    listRestaurants();
-  }, []);
 
   return (
     <section css={container}>

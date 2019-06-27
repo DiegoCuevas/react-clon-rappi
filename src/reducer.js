@@ -1,40 +1,8 @@
 const initialState = {
   user: null,
   cart: [],
-  restaurants: [
-    {
-      id: 0,
-      name: "Mc Donalds",
-      description: "Healthy food"
-    },
-    {
-      id: 1,
-      name: "Venomous",
-      description: "Healthy food"
-    }
-  ],
-  products: [
-    {
-      id: 0,
-      name: "Hamburgesa",
-      restId: 0
-    },
-    {
-      id: 1,
-      name: "Hamburgesa",
-      restId: 1
-    },
-    {
-      id: 2,
-      name: "Hamburgesa",
-      restId: 0
-    },
-    {
-      id: 3,
-      name: "Hamburgesa",
-      restId: 1
-    }
-  ]
+  restaurants: [],
+  products: []
 };
 
 function reducer(state = initialState, action = {}) {
@@ -59,11 +27,9 @@ function reducer(state = initialState, action = {}) {
     }
 
     case "LIST_RESTAURANTS": {
-      console.log(action.payload);
-
       return {
         ...state,
-        restaurants: [...action.payload]
+        restaurants: action.payload
       };
     }
 

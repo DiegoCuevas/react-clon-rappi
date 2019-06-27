@@ -77,7 +77,7 @@ const img = {
   borderRadius: ".5em 0 0 .5em"
 };
 
-function CardRestaurant() {
+function CardRestaurant(restaurant) {
   return (
     <>
       <Link css={linkStyle} to="/restaurant">
@@ -90,25 +90,7 @@ function CardRestaurant() {
             />
           </div>
           <div css={data}>
-            <span css={name}>Tanta</span>
-            <span css={description}>Desayuno - Internacional</span>
-            <span css={info}>
-              Envio S/. 6.65 <span css={separetor}>●</span> 50 min{" "}
-            </span>
-          </div>
-        </Card>
-      </Link>
-      <Link css={linkStyle} to="/restaurant">
-        <Card css={card}>
-          <div css={restaurantImg}>
-            <img
-              css={img}
-              src="https://images.rappi.pe/restaurants_background/842-1548689998.png?d=200x200&e=webp"
-              alt="restaurant"
-            />
-          </div>
-          <div css={data}>
-            <span css={name}>Tanta</span>
+            <span css={name}>{restaurant.restaurant.name}</span>
             <span css={description}>Desayuno - Internacional</span>
             <span css={info}>
               Envio S/. 6.65 <span css={separetor}>●</span> 50 min{" "}
