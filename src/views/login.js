@@ -24,13 +24,9 @@ function Login() {
     setPassword(event.target.value);
   }
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    try {
-      login({ email, password });
-    } catch (error) {
-      setError(error.message);
-    }
+    login({ email, password });
   }
 
   return (

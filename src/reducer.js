@@ -58,14 +58,9 @@ function reducer(state = initialState, action = {}) {
       };
     }
 
-    case "LIST_PRODUCTS": {
-      return {
-        ...state,
-        products: [...action.payload]
-      };
-    }
-
     case "LIST_RESTAURANTS": {
+      console.log(action.payload);
+
       return {
         ...state,
         restaurants: [...action.payload]

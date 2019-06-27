@@ -1,6 +1,8 @@
 const API_LOGIN_URL = "http://localhost:4000/api/login";
 const API_LOGOUT_URL = "http://localhost:4000/api/logout";
 
+const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
+
 function login(user) {
   return async dispatch => {
     const response = await fetch(API_LOGIN_URL, {
@@ -31,16 +33,18 @@ function logout() {
   };
 }
 
-async function listRestaurants() {
-  const response = await fetch("http://localhost:4000/api/restaurants");
-  const payload = await response.json();
-  return { type: "LIST_RESTAURANTS", payload };
-}
-
-async function listProducts() {
-  const response = await fetch("http://localhost:4000/api/orders");
-  const payload = await response.json();
-  return { type: "LIST_PRODUCTS", payload };
+function listRestaurants() {
+  return async dispatch => {
+    const response = await fetch(API_RESTAURANT_URL, {
+      credentials: "include",
+      headers: {
+        "Content-Type": "aplication/json"
+      }
+    });
+    const payload = await response.json();
+    if (!response.ok) dispatch({ type: "DEFAULT" });
+    dispatch({ type: "LIST_RESTAURANTS", payload });
+  };
 }
 
 function addProduct(id) {
@@ -67,12 +71,4 @@ function reset() {
   };
 }
 
-export {
-  addProduct,
-  listRestaurants,
-  listProducts,
-  removeProduct,
-  reset,
-  login,
-  logout
-};
+export { addProduct, listRestaurants, removeProduct, reset, login, logout };
