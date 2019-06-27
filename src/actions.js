@@ -4,6 +4,12 @@ async function listRestaurants() {
   return { type: "LIST_RESTAURANTS", payload };
 }
 
+async function listProducts() {
+  const response = await fetch("http://localhost:4000/api/orders");
+  const payload = await response.json();
+  return { type: "LIST_PRODUCTS", payload };
+}
+
 function addProduct(id) {
   return {
     type: "ADD_PRODUCT",
@@ -13,4 +19,19 @@ function addProduct(id) {
   };
 }
 
-export { addProduct, listRestaurants };
+function removeProduct(id) {
+  return {
+    type: "REMOVE_PRODUCT",
+    payload: {
+      id: id
+    }
+  };
+}
+
+function reset() {
+  return {
+    type: "RESET"
+  };
+}
+
+export { addProduct, listRestaurants, listProducts, removeProduct, reset };
