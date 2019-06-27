@@ -29,3 +29,32 @@ test("reducer - ADD_PRODUCT", () => {
     cart: [...initialState.cart, 1]
   });
 });
+
+test("reducer - RESET", () => {
+  const initialState = {
+    cart: [0],
+    restaurants: [
+      {
+        id: 0,
+        name: "Mc Donalds",
+        description: "Healthy food"
+      }
+    ],
+    products: [
+      {
+        id: 0,
+        name: "Hamburgesa",
+        restId: 0
+      }
+    ]
+  };
+
+  const finalState = reducer(initialState, {
+    type: "RESET"
+  });
+
+  expect(finalState).toEqual({
+    ...initialState,
+    cart: []
+  });
+});
