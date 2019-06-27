@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import React from "react";
+
 import { useRestaurants, useCart } from "../selectors";
-import { useAddProduct } from "../action-hooks";
+import { useLogin, useLogout } from "../action-hooks";
+
 import { Redirect, navigate } from "@reach/router";
 import { useUser, useUserUpdater } from "../contexts/user";
 import { logout } from "../services/user";

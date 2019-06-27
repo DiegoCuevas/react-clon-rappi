@@ -1,4 +1,5 @@
 const initialState = {
+  user: null,
   cart: [],
   restaurants: [
     {
@@ -38,6 +39,18 @@ const initialState = {
 
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    case "LOGIN": {
+      return {
+        ...state,
+        user: action.payload
+      };
+    }
+    case "LOGOUT": {
+      return {
+        ...state,
+        user: null
+      };
+    }
     case "ADD_PRODUCT": {
       return {
         ...state,

@@ -1,7 +1,24 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 
-import { addProduct, listRestaurants, removeProduct, reset } from "./actions";
+import {
+  addProduct,
+  listRestaurants,
+  removeProduct,
+  reset,
+  login,
+  logout
+} from "./actions";
+
+export function useLogin() {
+  const dispatch = useDispatch();
+  return React.useCallback(user => dispatch(login(user)), [dispatch]);
+}
+
+export function useLogout() {
+  const dispatch = useDispatch();
+  return React.useCallback(() => dispatch(logout()), [dispatch]);
+}
 
 export function useAddProduct() {
   const dispatch = useDispatch();
