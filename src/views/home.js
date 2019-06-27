@@ -2,10 +2,21 @@
 import { jsx } from "@emotion/core";
 import React from "react";
 import { Redirect, navigate } from "@reach/router";
+
 import { useUser, useUserUpdater } from "../contexts/user";
 import { logout } from "../services/user";
+import { Link } from "@reach/router";
+import ListRestaurants from "../components/listRestaurants";
 
 const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
+
+const container = {
+  "&:h1": {
+    fontSize: "21px",
+    margin: "0 5px",
+    color: "#333"
+  }
+};
 
 function Home() {
   const user = useUser();
@@ -40,10 +51,10 @@ function Home() {
   if (!user) return <Redirect to="login" noThrow />;
 
   return (
-    <div>
-      Home
-      <button onClick={handleLogoutClick}>Log out</button>
-    </div>
+    <section css={container}>
+      <h1>Restaurantes en tu zona</h1>
+      <ListRestaurants />
+    </section>
   );
 }
 

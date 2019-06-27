@@ -11,29 +11,29 @@ import Navbar from "./components/navbar";
 import store from "./store";
 import { UserProvider } from "./contexts/user";
 
+const global = {
+  body: {
+    fontFamily: "'Helvetica Neue', sans-serif",
+    margin: 0
+  }
+};
+
+const main = {
+  maxWidth: "1000px",
+  margin: "auto"
+};
+
 function App() {
   return (
     <UserProvider>
-      <Global
-        styles={{
-          body: {
-            background: "#fafafa",
-            fontFamily: "'Helvetica Neue', sans-serif",
-            margin: 0
-          }
-        }}
-      />
+      <Global styles={global} />
       <Navbar />
-      <main
-        css={{
-          maxWidth: "1000px",
-          margin: "auto"
-        }}
-      >
+      <main css={main}>
         <Router>
           <Login path="/login" />
           <Home path="/" />
           <Restaurant path="/restaurant" />
+          <Login path="/login" />
         </Router>
       </main>
     </UserProvider>
