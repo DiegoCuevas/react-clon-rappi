@@ -3,7 +3,7 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
-import { Card } from "../components/ui";
+import { Card } from "./ui";
 
 const container = {
   display: "flex",
@@ -63,10 +63,10 @@ const card = {
   }
 };
 
-function ListRestaurant() {
+function ListRestaurants() {
   return (
     <section css={container}>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -75,7 +75,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -84,7 +84,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -93,7 +93,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -102,7 +102,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -111,7 +111,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -120,7 +120,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -129,7 +129,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -138,7 +138,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -147,7 +147,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -156,7 +156,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -165,7 +165,7 @@ function ListRestaurant() {
           </span>
         </Card>
       </Link>
-      <Link css={linkStyle} to="#">
+      <Link css={linkStyle} to="/restaurant">
         <Card css={card}>
           <span css={name}>Tanta</span>
           <span css={description}>Desayuno - Internacional</span>
@@ -178,4 +178,4 @@ function ListRestaurant() {
   );
 }
 
-export default ListRestaurant;
+export default ListRestaurants;

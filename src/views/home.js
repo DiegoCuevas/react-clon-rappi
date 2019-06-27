@@ -6,7 +6,7 @@ import { Redirect, navigate } from "@reach/router";
 import { useUser, useUserUpdater } from "../contexts/user";
 import { logout } from "../services/user";
 import { Link } from "@reach/router";
-import ListRestaurant from "../components/listRestaurant";
+import ListRestaurants from "../components/listRestaurants";
 
 const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
 
@@ -53,7 +53,7 @@ function Home() {
   return (
     <section css={container}>
       <h1>Restaurantes en tu zona</h1>
-      <ListRestaurant />
+      <ListRestaurants />
     </section>
   );
 }
