@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import React from "react";
+import { Redirect } from "@reach/router";
 
 import ListProducts from "../components/listProducts";
+import { useUser } from "../selectors";
 
 const header = {
   display: "flex",
@@ -63,6 +65,9 @@ const img = {
 };
 
 function Restaurant() {
+  const user = useUser();
+  if (!user) return <Redirect to="login" noThrow />;
+
   return (
     <section>
       <div css={header}>

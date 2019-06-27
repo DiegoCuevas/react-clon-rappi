@@ -59,11 +59,9 @@ function reducer(state = initialState, action = {}) {
     }
 
     case "LIST_RESTAURANTS": {
-      console.log(action.payload);
-
       return {
         ...state,
-        restaurants: [...action.payload]
+        restaurants: action.payload
       };
     }
 
