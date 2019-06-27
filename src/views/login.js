@@ -3,13 +3,13 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import { Redirect } from "@reach/router";
 import { Card, Button, Input } from "../components/ui";
-import { useUser, useUserUpdater } from "../contexts/user";
 
-import { login } from "../services/user";
+import { useLogin } from "../action-hooks";
+import { useUser } from "../selectors";
 
 function Login() {
   const user = useUser();
-  const userUpdater = useUserUpdater();
+  const login = useLogin();
   const [email, setEmail] = React.useState("josh@delivery.pe");
   const [password, setPassword] = React.useState("123456");
   const [error, setError] = React.useState(null);
@@ -24,14 +24,9 @@ function Login() {
     setPassword(event.target.value);
   }
 
-  async function handleSubmit(event) {
+  function handleSubmit(event) {
     event.preventDefault();
-    try {
-      const { name, id } = await login({ email, password });
-      userUpdater({ type: "LOGIN", payload: { name, email, id } });
-    } catch (error) {
-      setError(error.message);
-    }
+    login({ email, password });
   }
 
   return (

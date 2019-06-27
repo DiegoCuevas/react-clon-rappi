@@ -1,4 +1,5 @@
 const initialState = {
+  user: null,
   cart: [],
   restaurants: [
     {
@@ -38,10 +39,46 @@ const initialState = {
 
 function reducer(state = initialState, action = {}) {
   switch (action.type) {
+    case "LOGIN": {
+      return {
+        ...state,
+        user: action.payload
+      };
+    }
+    case "LOGOUT": {
+      return {
+        ...state,
+        user: null
+      };
+    }
     case "ADD_PRODUCT": {
       return {
         ...state,
         cart: [...state.cart, action.payload.id]
+      };
+    }
+
+    case "LIST_RESTAURANTS": {
+      console.log(action.payload);
+
+      return {
+        ...state,
+        restaurants: [...action.payload]
+      };
+    }
+
+    case "REMOVE_PRODUCT": {
+      const updatedCart = [...state.cart];
+
+      var index = updatedCart.indexOf(action.payload.id);
+
+      if (index > -1) {
+        updatedCart.splice(index, 1);
+      }
+
+      return {
+        ...state,
+        cart: updatedCart
       };
     }
 

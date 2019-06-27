@@ -9,7 +9,6 @@ import Restaurant from "./views/restaurant";
 import Home from "./views/home";
 import Navbar from "./components/navbar";
 import store from "./store";
-import { UserProvider } from "./contexts/user";
 
 const global = {
   body: {
@@ -25,7 +24,7 @@ const main = {
 
 function App() {
   return (
-    <UserProvider>
+    <>
       <Global styles={global} />
       <Navbar />
       <main css={main}>
@@ -36,7 +35,7 @@ function App() {
           <Login path="/login" />
         </Router>
       </main>
-    </UserProvider>
+    </>
   );
 }
 
