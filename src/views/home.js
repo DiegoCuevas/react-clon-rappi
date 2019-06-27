@@ -1,37 +1,30 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
 import React from "react";
-
 import { useRestaurants, useCart, useUser } from "../selectors";
 import { useLogout, useListRestaurants } from "../action-hooks";
+import ListRestaurants from "../components/listRestaurants";
 
-import { Redirect, navigate } from "@reach/router";
-
-const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
+const container = {
+  "&:h1": {
+    fontSize: "21px",
+    margin: "0 5px",
+    color: "#333"
+  }
+};
 
 function Home() {
-  const user = useUser();
   const listRestaurants = useListRestaurants();
-  const logout = useLogout();
-  const restaurants = useRestaurants();
 
   React.useEffect(() => {
-    // if (!user) return;
     listRestaurants();
   }, []);
 
-  async function handleLogoutClick() {
-    logout();
-  }
-
-  // if (!user) return <Redirect to="login" noThrow />;
-
   return (
-    <div>
-      Home
-      <button onClick={handleLogoutClick}>Log out</button>
-      <div> {JSON.stringify(restaurants)}</div>
-    </div>
+    <section css={container}>
+      <h1>Restaurantes en tu zona</h1>
+      <ListRestaurants />
+    </section>
   );
 }
 
