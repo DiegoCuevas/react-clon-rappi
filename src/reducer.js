@@ -1,6 +1,7 @@
 const initialState = {
   user: null,
   cart: [],
+  restaurant: {},
   restaurants: [
     {
       id: 0,
@@ -62,6 +63,14 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         restaurants: action.payload
+      };
+    }
+
+    case "SELECT_RESTAURANT": {
+      console.log(state);
+      return {
+        ...state,
+        restaurant: action.payload
       };
     }
 
