@@ -1,36 +1,24 @@
 import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { useSelectRestaurant } from "../action-hooks";
+import { usePosition } from "../selectors";
 
 const container = {
   height: "100vh",
   width: "100vw",
   margin: "0 auto"
-  // <style>
-  //     body {
-  //       margin: 0;
-  //     }
-  //     h1,
-  //     h2,
-  //     p {
-  //       font-family: sans-serif;
-  //       text-align: center;
-  //     }
-  //     .leaflet-container {
-  //       height: 100vh;
-  //       width: 100vw;
-  //       margin: 0 auto;
-  //     }
-  //   </style>
 };
 
-function Ubication() {
+function Ubication({ id = 1 }) {
+  const selectRestaurant = useSelectRestaurant();
   const [position, setPosition] = React.useState([0, 0]);
   const [zoomState, setZoomState] = React.useState(16);
-  // TODO: need position of the restaurant
-  const [positionRest, setPositionRest] = React.useState([
-    -12.1197592,
-    -77.0449321
-  ]);
+  const positionRest = usePosition();
+
+  React.useEffect(() => {
+    console.log("effect");
+    selectRestaurant(id);
+  });
 
   const mapRef = React.useRef();
 
@@ -67,7 +55,7 @@ function Ubication() {
           </span>
         </Popup>
       </Marker>
-      <Marker position={positionRest}>
+      <Marker position={[positionRest.latitud, positionRest.longitud]}>
         <Popup>
           This is the restaurant
           <span role="img" aria-label="emoji dot position">

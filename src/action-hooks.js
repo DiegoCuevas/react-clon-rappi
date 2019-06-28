@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import {
   addProduct,
   listRestaurants,
+  selectRestaurant,
   removeProduct,
   reset,
   login,
@@ -38,4 +39,10 @@ export function useReset() {
 export function useListRestaurants() {
   const dispatch = useDispatch();
   return React.useCallback(() => dispatch(listRestaurants()), [dispatch]);
+}
+
+export function useSelectRestaurant() {
+  console.log("action-hooks");
+  const dispatch = useDispatch();
+  return React.useCallback(id => dispatch(selectRestaurant(id)), [dispatch]);
 }
