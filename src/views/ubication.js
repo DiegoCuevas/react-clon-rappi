@@ -63,15 +63,15 @@ function Ubication() {
         <Popup>
           You are here!
           <span role="img" aria-label="emoji dot position">
-            📍
+            👨‍🎤
           </span>
         </Popup>
       </Marker>
       <Marker position={positionRest}>
         <Popup>
-          You are here!
+          This is the restaurant
           <span role="img" aria-label="emoji dot position">
-            📍
+            🏘️
           </span>
         </Popup>
       </Marker>
