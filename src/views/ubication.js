@@ -3,21 +3,14 @@ import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { jsx } from "@emotion/core";
+import { Redirect } from "@reach/router";
+import { useUser } from "../selectors";
 
-import { useSelectRestaurant } from "../action-hooks";
-import { usePosition } from "../selectors";
+import MarkerRestaurant from "../components/markerRestaurant";
 
 const container = {
   height: "80vh"
 };
-
-const markerRest = new L.Icon({
-  iconUrl: require("../assets/marker-restaurant.png"),
-  iconRetinaUrl: require("../assets/marker-restaurant.png"),
-  iconAnchor: [5, 55],
-  popupAnchor: [10, -44],
-  iconSize: [40, 40]
-});
 
 const markerPeople = new L.Icon({
   iconUrl: require("../assets/marker-people.png"),
@@ -27,17 +20,9 @@ const markerPeople = new L.Icon({
   iconSize: [40, 40]
 });
 
-function Ubication({ id = 1 }) {
-  const selectRestaurant = useSelectRestaurant();
+function Ubication({ id }) {
   const [position, setPosition] = React.useState([-12.1402803, -76.9881638]);
   const [zoomState, setZoomState] = React.useState(16);
-  const positionRest = usePosition();
-
-  React.useEffect(() => {
-    console.log("effect");
-    selectRestaurant(id);
-  });
-
   const mapRef = React.useRef();
 
   React.useEffect(() => {
@@ -48,6 +33,9 @@ function Ubication({ id = 1 }) {
       navigator.geolocation.clearWatch(watchID);
     };
   }, [setPosition]);
+
+  const user = useUser();
+  if (!user) return <Redirect to="login" noThrow />;
 
   const handleOnZoom = map => {
     setZoomState(mapRef.current.leafletElement.getZoom());
@@ -73,17 +61,7 @@ function Ubication({ id = 1 }) {
           </span>
         </Popup>
       </Marker>
-      <Marker
-        position={[positionRest.latitud, positionRest.longitud]}
-        icon={markerRest}
-      >
-        <Popup>
-          This is the restaurant
-          <span role="img" aria-label="emoji dot position">
-            🏘️
-          </span>
-        </Popup>
-      </Marker>
+      <MarkerRestaurant id={id} />
     </Map>
   );
 

@@ -67,7 +67,6 @@ function reducer(state = initialState, action = {}) {
     }
 
     case "SELECT_RESTAURANT": {
-      console.log(state);
       return {
         ...state,
         restaurant: action.payload

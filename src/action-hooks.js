@@ -42,7 +42,6 @@ export function useListRestaurants() {
 }
 
 export function useSelectRestaurant() {
-  console.log("action-hooks");
   const dispatch = useDispatch();
   return React.useCallback(id => dispatch(selectRestaurant(id)), [dispatch]);
 }

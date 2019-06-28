@@ -4,8 +4,6 @@ const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
 
 function selectRestaurant(id) {
   return async dispatch => {
-    console.log("hola");
-    console.log(`${API_RESTAURANT_URL}/${id}`);
     const response = await fetch(`${API_RESTAURANT_URL}/${id}`, {
       method: "GET",
       credentials: "include",
@@ -15,7 +13,6 @@ function selectRestaurant(id) {
     });
     if (!response.ok) return { type: "DEFAULT" };
     const payload = await response.json();
-    console.log(payload);
     dispatch({ type: "SELECT_RESTAURANT", payload });
   };
 }

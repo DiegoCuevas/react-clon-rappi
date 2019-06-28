@@ -11,7 +11,6 @@ function useCart() {
 
 function usePosition() {
   return useSelector(state => {
-    // console.log(state);
     if (state.restaurant.address) {
       return state.restaurant.address;
     } else {

@@ -12,9 +12,9 @@ const container = {
 function ListProducts() {
   return (
     <section css={container}>
-      <CardProduct />
-      <CardProduct />
-      <CardProduct />
+      <CardProduct idRestaurant={1} />
+      <CardProduct idRestaurant={2} />
+      <CardProduct idRestaurant={1} />
     </section>
   );
 }
