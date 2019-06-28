@@ -3,8 +3,7 @@ import { jsx } from "@emotion/core";
 import React from "react";
 import { Redirect } from "@reach/router";
 
-import { useRestaurants, useCart, useUser } from "../selectors";
-import { useLogout, useListRestaurants } from "../action-hooks";
+import { useUser } from "../selectors";
 import ListRestaurants from "../components/listRestaurants";
 
 const container = {
@@ -17,11 +16,6 @@ const container = {
 
 function Home() {
   const user = useUser();
-  const listRestaurants = useListRestaurants();
-
-  React.useEffect(() => {
-    listRestaurants();
-  }, []);
 
   if (!user) return <Redirect to="/login" noThrow />;
 
