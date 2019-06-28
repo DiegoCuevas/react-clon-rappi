@@ -2,6 +2,21 @@ const API_LOGIN_URL = "http://localhost:4000/api/login";
 const API_LOGOUT_URL = "http://localhost:4000/api/logout";
 const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
 
+function selectRestaurant(id) {
+  return async dispatch => {
+    const response = await fetch(`${API_RESTAURANT_URL}/${id}`, {
+      method: "GET",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    if (!response.ok) return { type: "DEFAULT" };
+    const payload = await response.json();
+    dispatch({ type: "SELECT_RESTAURANT", payload });
+  };
+}
+
 function login(user) {
   return async dispatch => {
     const response = await fetch(API_LOGIN_URL, {
@@ -70,4 +85,12 @@ function reset() {
   };
 }
 
-export { addProduct, listRestaurants, removeProduct, reset, login, logout };
+export {
+  addProduct,
+  listRestaurants,
+  selectRestaurant,
+  removeProduct,
+  reset,
+  login,
+  logout
+};

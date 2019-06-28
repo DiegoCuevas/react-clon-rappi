@@ -9,6 +9,16 @@ function useCart() {
   return useSelector(state => Object.values(state.cart), shallowEqual);
 }
 
+function usePosition() {
+  return useSelector(state => {
+    if (state.restaurant.address) {
+      return state.restaurant.address;
+    } else {
+      return { name: "examplo", latitud: "0", longitud: "0" };
+    }
+  }, shallowEqual);
+}
+
 function useUser() {
   return useSelector(state => {
     if (state.user) {
@@ -19,4 +29,4 @@ function useUser() {
   }, shallowEqual);
 }
 
-export { useRestaurants, useCart, useUser };
+export { useRestaurants, usePosition, useCart, useUser };
