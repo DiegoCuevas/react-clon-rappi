@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
-
+import { useRestaurant } from "../selectors";
 import CardProduct from "./cardProduct";
 
 const container = {
@@ -10,11 +10,13 @@ const container = {
 };
 
 function ListProducts() {
+  const restaurant = useRestaurant();
+
   return (
     <section css={container}>
-      <CardProduct />
-      <CardProduct />
-      <CardProduct />
+      {restaurant.menu_items.map(product => {
+        return <CardProduct product={product} key={product.id} />;
+      })}
     </section>
   );
 }

@@ -78,9 +78,10 @@ const img = {
 };
 
 function CardRestaurant(restaurant) {
+  const rest_link = "/restaurant/" + restaurant.restaurant.id;
   return (
     <>
-      <Link css={linkStyle} to="/restaurant">
+      <Link css={linkStyle} to={rest_link}>
         <Card css={card}>
           <div css={restaurantImg}>
             <img

@@ -11,11 +11,20 @@ function useCart() {
 
 function usePosition() {
   return useSelector(state => {
-    // console.log(state);
     if (state.restaurant.address) {
       return state.restaurant.address;
     } else {
       return { name: "examplo", latitud: "0", longitud: "0" };
+    }
+  }, shallowEqual);
+}
+
+function useRestaurant() {
+  return useSelector(state => {
+    if (state.restaurant) {
+      return state.restaurant;
+    } else {
+      return { restaurant: { name: "default" } };
     }
   }, shallowEqual);
 }
@@ -30,4 +39,4 @@ function useUser() {
   }, shallowEqual);
 }
 
-export { useRestaurants, usePosition, useCart, useUser };
+export { useRestaurants, usePosition, useCart, useUser, useRestaurant };

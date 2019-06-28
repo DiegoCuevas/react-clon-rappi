@@ -33,7 +33,7 @@ function App() {
         <Router>
           <Login path="/login" />
           <Home path="/" />
-          <Restaurant path="/restaurant" />
+          <Restaurant path="/restaurant/:id" />
           <Ubication path="/ubication" />
           <Login path="/login" />
         </Router>
