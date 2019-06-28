@@ -4,6 +4,7 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 
 import { Card } from "./ui";
+import { id } from "postcss-selector-parser";
 
 const name = {
   fontSize: "16px",
@@ -77,10 +78,10 @@ const img = {
   borderRadius: ".5em 0 0 .5em"
 };
 
-function CardProduct({ product }) {
+function CardProduct({ idRestaurant, product }) {
   return (
     <>
-      <Link css={linkStyle} to="/restaurant">
+      <Link css={linkStyle} to={`/ubication/${idRestaurant}`}>
         <Card css={card}>
           <div css={restaurantImg}>
             <img

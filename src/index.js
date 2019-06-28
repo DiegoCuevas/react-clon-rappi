@@ -34,7 +34,7 @@ function App() {
           <Login path="/login" />
           <Home path="/" />
           <Restaurant path="/restaurant/:id" />
-          <Ubication path="/ubication" />
+          <Ubication path="/ubication/:id" />
           <Login path="/login" />
         </Router>
       </main>

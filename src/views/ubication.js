@@ -1,25 +1,28 @@
+/** @jsx jsx */
 import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
-import { useSelectRestaurant } from "../action-hooks";
-import { usePosition } from "../selectors";
+import L from "leaflet";
+import { jsx } from "@emotion/core";
+import { Redirect } from "@reach/router";
+import { useUser } from "../selectors";
+
+import MarkerRestaurant from "../components/markerRestaurant";
 
 const container = {
-  height: "100vh",
-  width: "100vw",
-  margin: "0 auto"
+  height: "80vh"
 };
 
-function Ubication({ id = 1 }) {
-  const selectRestaurant = useSelectRestaurant();
-  const [position, setPosition] = React.useState([0, 0]);
+const markerPeople = new L.Icon({
+  iconUrl: require("../assets/marker-people.png"),
+  iconRetinaUrl: require("../assets/marker-people.png"),
+  iconAnchor: [5, 55],
+  popupAnchor: [10, -44],
+  iconSize: [40, 40]
+});
+
+function Ubication({ id }) {
+  const [position, setPosition] = React.useState([-12.1402803, -76.9881638]);
   const [zoomState, setZoomState] = React.useState(16);
-  const positionRest = usePosition();
-
-  React.useEffect(() => {
-    console.log("effect");
-    selectRestaurant(id);
-  });
-
   const mapRef = React.useRef();
 
   React.useEffect(() => {
@@ -30,6 +33,9 @@ function Ubication({ id = 1 }) {
       navigator.geolocation.clearWatch(watchID);
     };
   }, [setPosition]);
+
+  const user = useUser();
+  if (!user) return <Redirect to="login" noThrow />;
 
   const handleOnZoom = map => {
     setZoomState(mapRef.current.leafletElement.getZoom());
@@ -47,7 +53,7 @@ function Ubication({ id = 1 }) {
         attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <Marker position={position}>
+      <Marker position={position} icon={markerPeople}>
         <Popup>
           You are here!
           <span role="img" aria-label="emoji dot position">
@@ -55,14 +61,7 @@ function Ubication({ id = 1 }) {
           </span>
         </Popup>
       </Marker>
-      <Marker position={[positionRest.latitud, positionRest.longitud]}>
-        <Popup>
-          This is the restaurant
-          <span role="img" aria-label="emoji dot position">
-            🏘️
-          </span>
-        </Popup>
-      </Marker>
+      <MarkerRestaurant id={id} />
     </Map>
   );
 
