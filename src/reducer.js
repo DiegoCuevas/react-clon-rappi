@@ -1,7 +1,7 @@
 const initialState = {
   user: null,
   cart: [],
-  restaurant: {},
+  restaurant: { name: "default", menu_items: [] },
   restaurants: [
     {
       id: 0,

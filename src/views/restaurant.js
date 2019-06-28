@@ -4,7 +4,9 @@ import React from "react";
 import { Redirect } from "@reach/router";
 
 import ListProducts from "../components/listProducts";
-import { useUser } from "../selectors";
+import { useUser, useRestaurant } from "../selectors";
+
+import { useSelectRestaurant } from "../action-hooks";
 
 const header = {
   display: "flex",
@@ -64,7 +66,14 @@ const img = {
   borderRadius: ".5em"
 };
 
-function Restaurant() {
+function Restaurant({ id }) {
+  const selectRestaurant = useSelectRestaurant();
+  const restaurant = useRestaurant();
+
+  React.useEffect(() => {
+    selectRestaurant(id);
+  }, []);
+
   const user = useUser();
   if (!user) return <Redirect to="login" noThrow />;
 
@@ -79,7 +88,8 @@ function Restaurant() {
           />
         </div>
         <div css={data}>
-          <h1 css={title}>Tanta</h1>
+          {/* {console.log(restaurant)} */}
+          <h1 css={title}>{restaurant.name}</h1>
           <span css={hours}>08:30 am - 11:30 pm</span>
           <div css={infoDelivery}>
             <div css={info}>

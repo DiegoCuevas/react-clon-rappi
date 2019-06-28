@@ -19,6 +19,16 @@ function usePosition() {
   }, shallowEqual);
 }
 
+function useRestaurant() {
+  return useSelector(state => {
+    if (state.restaurant) {
+      return state.restaurant;
+    } else {
+      return { restaurant: { name: "default" } };
+    }
+  }, shallowEqual);
+}
+
 function useUser() {
   return useSelector(state => {
     if (state.user) {
@@ -29,4 +39,4 @@ function useUser() {
   }, shallowEqual);
 }
 
-export { useRestaurants, usePosition, useCart, useUser };
+export { useRestaurants, usePosition, useCart, useUser, useRestaurant };
