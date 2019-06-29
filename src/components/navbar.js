@@ -36,19 +36,6 @@ const img = {
   width: "80px"
 };
 
-// mobile
-// ul Padre
-// position: relative;
-//  li login
-// display: flex;
-// justify-self: fl;
-// align-items: center;
-// position: absolute;
-// right: 16px;
-// bottom: 0;
-// top: 0;
-// margin: auto;
-
 function Nabvar() {
   return (
     <nav css={container}>
