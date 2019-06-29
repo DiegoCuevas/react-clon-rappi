@@ -62,23 +62,23 @@ function Cart() {
           flexFlow: "column"
         }}
       >
-        {Object.values(cart).map(e => {
+        {Object.values(cart).map(element => {
           return (
-            <article css={cssOrden} key={e.menu_item_id}>
-              <span>{e.name}</span>
+            <article css={cssOrden} >
+              <span>{element.name}</span>
               <div css={styleButtonQuantity}>
                 <span
                   css={styleButtonPlusMinus}
-                  onClick={() => handleDecrease(e)}
+                  onClick={() => handleDecrease(element)}
                 >
                   -
                 </span>
-                <span>{e.quantity}</span>
-                <span css={styleButtonPlusMinus} onClick={() => handleClick(e)}>
+                <span>{element.quantity}</span>
+                <span css={styleButtonPlusMinus} onClick={() => handleClick(element)}>
                   +
                 </span>
               </div>
-              <span>$/. {e.price * e.quantity}</span>
+              <div css={{width: "80px"}}><span>$/. {element.price * element.quantity}</span></div>
             </article>
           );
         })}
