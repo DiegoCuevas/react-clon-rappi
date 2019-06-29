@@ -3,11 +3,12 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import CardProduct from "../components/cardProduct";
 import { useUser, useCart } from "../selectors";
+import { useAddMenuItem } from "../action-hooks"
 
 function Cart() {
   const user = useUser();
   const cart = useCart();
-
+  const addMenuItem = useAddMenuItem();
 
   const cssOrden = {
     display: "flex",
@@ -36,10 +37,9 @@ function Cart() {
     color: "#3AC69F"
   };
 
-  // function handleIncrease(id) {
-  //   increaseQuantity(id);
-  // }
-
+  function handleClick(item) {
+    addMenuItem(item);
+    }
   // function handleDecrease(id) {
   //   decreaseQuantity(id);
   // }
@@ -62,7 +62,7 @@ function Cart() {
                   -
                 </span>
                 <span>{e.quantity}</span>
-                <span css={styleButtonPlusMinus}>
+                <span css={styleButtonPlusMinus} onClick={() => handleClick(e)} >
                   +
                 </span>
               </div>

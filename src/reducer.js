@@ -69,6 +69,7 @@ function reducer(state = initialState, action = {}) {
 
 
     case "ADD_MENU_ITEM": {
+      const findMenuItem = state.cart[action.payload.item.id];
       if (!state.cart.hasOwnProperty(action.payload.item.id)) {
         return {
           ...state,
@@ -82,10 +83,17 @@ function reducer(state = initialState, action = {}) {
         };
       }
       return {
-        ...state
+        ...state,
+          cart: {
+            ...state.cart,
+            [action.payload.item.id]: {
+              ...findMenuItem,
+              quantity: findMenuItem.quantity + 1
+            }
+          }
       }
     }
-    
+
     case "RESET": {
       return initialState;
     }
