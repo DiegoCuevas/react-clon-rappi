@@ -3,12 +3,19 @@ import React from "react";
 import { jsx } from "@emotion/core";
 import CardProduct from "../components/cardProduct";
 import { useUser, useCart } from "../selectors";
-import { useAddMenuItem } from "../action-hooks"
+import {
+  useAddMenuItem,
+  useDecreaseQuantity,
+  useDeleteFromCart
+} from "../action-hooks";
+import { Redirect } from "@reach/router";
 
 function Cart() {
   const user = useUser();
   const cart = useCart();
   const addMenuItem = useAddMenuItem();
+  const decreaseQuantity = useDecreaseQuantity();
+  const deleteFromCart = useDeleteFromCart();
 
   const cssOrden = {
     display: "flex",
@@ -29,22 +36,24 @@ function Cart() {
     display: "flex",
     justifyContent: "space-between",
     padding: "2px 5px",
-    marginLeft: "auto"
+    marginLeft: "auto",
   };
 
   const styleButtonPlusMinus = {
     cursor: "pointer",
-    color: "#3AC69F"
+    color: "#3AC69F",
   };
 
   function handleClick(item) {
     addMenuItem(item);
-    }
-  // function handleDecrease(id) {
-  //   decreaseQuantity(id);
-  // }
+  }
+  function handleDecrease(item) {
+    if (item.quantity > 1) {
+      decreaseQuantity(item);
+    } else deleteFromCart(item);
+  }
 
-  // if (!user) return <Redirect to="login" noThrow />;
+  if (!user) return <Redirect to="login" noThrow />;
   return (
     <>
       <section
@@ -58,22 +67,29 @@ function Cart() {
             <article css={cssOrden} key={e.menu_item_id}>
               <span>{e.name}</span>
               <div css={styleButtonQuantity}>
-                <span css={styleButtonPlusMinus} >
+                <span
+                  css={styleButtonPlusMinus}
+                  onClick={() => handleDecrease(e)}
+                >
                   -
                 </span>
                 <span>{e.quantity}</span>
-                <span css={styleButtonPlusMinus} onClick={() => handleClick(e)} >
+                <span css={styleButtonPlusMinus} onClick={() => handleClick(e)}>
                   +
                 </span>
               </div>
-              <span>$/. {e.price}</span>
+              <span>$/. {e.price * e.quantity}</span>
             </article>
           );
         })}
 
         <article css={cssResult}>
           <span css={{ margin: "10px" }}>Total</span>{" "}
-          <span css={{ margin: "10px" }}>$/. 80</span>
+          <span css={{ margin: "10px" }}>
+            $/. {Object.values(cart).reduce((acc, item) => {
+              return acc + item.quantity * item.price;
+            }, 0)}
+          </span>
         </article>
         <button css={{ margin: "20px" }}>Continue</button>
       </section>

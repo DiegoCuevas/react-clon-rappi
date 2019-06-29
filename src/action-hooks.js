@@ -5,7 +5,8 @@ import {
   addMenuItem,
   listRestaurants,
   selectRestaurant,
-  removeProduct,
+  decreaseQuantity,
+  deleteFromCart,
   reset,
   login,
   logout
@@ -26,9 +27,14 @@ export function useAddMenuItem() {
   return React.useCallback(item => dispatch(addMenuItem(item)), [dispatch]);
 }
 
-export function useRemoveProduct() {
+export function useDecreaseQuantity() {
   const dispatch = useDispatch();
-  return React.useCallback(id => dispatch(removeProduct(id)), [dispatch]);
+  return React.useCallback(item => dispatch(decreaseQuantity(item)), [dispatch]);
+}
+
+export function useDeleteFromCart() {
+  const dispatch = useDispatch();
+  return React.useCallback(item => dispatch(deleteFromCart(item)), [dispatch]);
 }
 
 export function useReset() {

@@ -94,6 +94,30 @@ function reducer(state = initialState, action = {}) {
       }
     }
 
+    case "DECREASE_QUANTITY": {
+      const findMenuItem = state.cart[action.payload.item.id];
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          [action.payload.item.id]: {
+            ...findMenuItem,
+            quantity: findMenuItem.quantity - 1
+          }
+        }
+      };
+    }
+
+    case "DELETE_FROM_CART": {
+      const cartUpdated = Object.values(state.cart)
+        .filter(item => item.id !== action.payload.item.id)
+        .reduce((acc, item) => ({ ...acc, [item.id]: item }), {});
+      return {
+        ...state,
+        cart: cartUpdated
+      };
+    }
+    
     case "RESET": {
       return initialState;
     }

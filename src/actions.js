@@ -70,11 +70,20 @@ function addMenuItem(item) {
   };
 }
 
-function removeProduct(id) {
+function decreaseQuantity(item) {
   return {
-    type: "REMOVE_PRODUCT",
+    type: "DECREASE_QUANTITY",
     payload: {
-      id: id
+      item
+    }
+  };
+}
+
+function deleteFromCart(item) {
+  return {
+    type: "DELETE_FROM_CART",
+    payload: {
+      item
     }
   };
 }
@@ -89,7 +98,8 @@ export {
   addMenuItem,
   listRestaurants,
   selectRestaurant,
-  removeProduct,
+  decreaseQuantity,
+  deleteFromCart,
   reset,
   login,
   logout
