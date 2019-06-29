@@ -1,6 +1,6 @@
 const initialState = {
   user: null,
-  cart: [],
+  cart: {},
   restaurant: { name: "default", menu_items: [] },
   restaurants: [
     {
@@ -52,12 +52,6 @@ function reducer(state = initialState, action = {}) {
         user: null
       };
     }
-    case "ADD_PRODUCT": {
-      return {
-        ...state,
-        cart: [...state.cart, action.payload.id]
-      };
-    }
 
     case "LIST_RESTAURANTS": {
       return {
@@ -73,28 +67,60 @@ function reducer(state = initialState, action = {}) {
       };
     }
 
-    case "REMOVE_PRODUCT": {
-      const updatedCart = [...state.cart];
 
-      var index = updatedCart.indexOf(action.payload.id);
-
-      if (index > -1) {
-        updatedCart.splice(index, 1);
+    case "ADD_MENU_ITEM": {
+      const findMenuItem = state.cart[action.payload.item.id];
+      if (!state.cart.hasOwnProperty(action.payload.item.id)) {
+        return {
+          ...state,
+          cart: {
+            ...state.cart,
+            [action.payload.item.id]: {
+              ...action.payload.item,
+              quantity: 1
+            }
+          }
+        };
       }
-
       return {
         ...state,
-        cart: updatedCart
+          cart: {
+            ...state.cart,
+            [action.payload.item.id]: {
+              ...findMenuItem,
+              quantity: findMenuItem.quantity + 1
+            }
+          }
+      }
+    }
+
+    case "DECREASE_QUANTITY": {
+      const findMenuItem = state.cart[action.payload.item.id];
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          [action.payload.item.id]: {
+            ...findMenuItem,
+            quantity: findMenuItem.quantity - 1
+          }
+        }
       };
     }
 
+    case "DELETE_FROM_CART": {
+      const cartUpdated = Object.values(state.cart)
+        .filter(item => item.id !== action.payload.item.id)
+        .reduce((acc, item) => ({ ...acc, [item.id]: item }), {});
+      return {
+        ...state,
+        cart: cartUpdated
+      };
+    }
+    
     case "RESET": {
-      return {
-        ...state,
-        cart: []
-      };
+      return initialState;
     }
-
     default: {
       return state;
     }

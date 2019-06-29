@@ -61,20 +61,29 @@ function listRestaurants() {
   };
 }
 
-function addProduct(id) {
+function addMenuItem(item) {
   return {
-    type: "ADD_PRODUCT",
+    type: "ADD_MENU_ITEM",
     payload: {
-      id: id
+      item
     }
   };
 }
 
-function removeProduct(id) {
+function decreaseQuantity(item) {
   return {
-    type: "REMOVE_PRODUCT",
+    type: "DECREASE_QUANTITY",
     payload: {
-      id: id
+      item
+    }
+  };
+}
+
+function deleteFromCart(item) {
+  return {
+    type: "DELETE_FROM_CART",
+    payload: {
+      item
     }
   };
 }
@@ -86,10 +95,11 @@ function reset() {
 }
 
 export {
-  addProduct,
+  addMenuItem,
   listRestaurants,
   selectRestaurant,
-  removeProduct,
+  decreaseQuantity,
+  deleteFromCart,
   reset,
   login,
   logout

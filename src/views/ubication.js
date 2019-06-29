@@ -5,9 +5,7 @@ import L from "leaflet";
 import { jsx } from "@emotion/core";
 import { Redirect } from "@reach/router";
 import { useUser } from "../selectors";
-
 import MarkerRestaurant from "../components/markerRestaurant";
-
 const container = {
   height: "80vh"
 };
@@ -24,7 +22,6 @@ function Ubication({ id }) {
   const [position, setPosition] = React.useState([-12.1402803, -76.9881638]);
   const [zoomState, setZoomState] = React.useState(16);
   const mapRef = React.useRef();
-
   React.useEffect(() => {
     const watchID = navigator.geolocation.watchPosition(pos => {
       setPosition([pos.coords.latitude, pos.coords.longitude]);
