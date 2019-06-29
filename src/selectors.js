@@ -6,7 +6,7 @@ function useRestaurants() {
 }
 
 function useCart() {
-  return useSelector(state => Object.values(state.cart), shallowEqual);
+  return useSelector(state => state.cart, shallowEqual);
 }
 
 function usePosition() {

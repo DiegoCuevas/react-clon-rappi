@@ -4,7 +4,7 @@ import { render } from "react-dom";
 import { Router } from "@reach/router";
 import { Provider } from "react-redux";
 import { Global, jsx } from "@emotion/core";
-
+import Cart from "./views/cart"
 import Login from "./views/login";
 import Restaurant from "./views/restaurant";
 import Home from "./views/home";
@@ -31,6 +31,7 @@ function App() {
       <Navbar />
       <main css={main}>
         <Router>
+          <Cart path="/cart"/>
           <Login path="/login" />
           <Home path="/" />
           <Restaurant path="/restaurant/:id" />

@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 
 import {
-  addProduct,
+  addMenuItem,
   listRestaurants,
   selectRestaurant,
   removeProduct,
@@ -21,9 +21,9 @@ export function useLogout() {
   return React.useCallback(() => dispatch(logout()), [dispatch]);
 }
 
-export function useAddProduct() {
+export function useAddMenuItem() {
   const dispatch = useDispatch();
-  return React.useCallback(id => dispatch(addProduct(id)), [dispatch]);
+  return React.useCallback(item => dispatch(addMenuItem(item)), [dispatch]);
 }
 
 export function useRemoveProduct() {

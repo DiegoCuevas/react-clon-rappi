@@ -1,6 +1,6 @@
 const initialState = {
   user: null,
-  cart: [],
+  cart: {},
   restaurant: { name: "default", menu_items: [] },
   restaurants: [
     {
@@ -52,12 +52,6 @@ function reducer(state = initialState, action = {}) {
         user: null
       };
     }
-    case "ADD_PRODUCT": {
-      return {
-        ...state,
-        cart: [...state.cart, action.payload.id]
-      };
-    }
 
     case "LIST_RESTAURANTS": {
       return {
@@ -73,28 +67,28 @@ function reducer(state = initialState, action = {}) {
       };
     }
 
-    case "REMOVE_PRODUCT": {
-      const updatedCart = [...state.cart];
 
-      var index = updatedCart.indexOf(action.payload.id);
-
-      if (index > -1) {
-        updatedCart.splice(index, 1);
+    case "ADD_MENU_ITEM": {
+      if (!state.cart.hasOwnProperty(action.payload.item.id)) {
+        return {
+          ...state,
+          cart: {
+            ...state.cart,
+            [action.payload.item.id]: {
+              ...action.payload.item,
+              quantity: 1
+            }
+          }
+        };
       }
-
       return {
-        ...state,
-        cart: updatedCart
-      };
+        ...state
+      }
     }
-
+    
     case "RESET": {
-      return {
-        ...state,
-        cart: []
-      };
+      return initialState;
     }
-
     default: {
       return state;
     }

@@ -61,11 +61,11 @@ function listRestaurants() {
   };
 }
 
-function addProduct(id) {
+function addMenuItem(item) {
   return {
-    type: "ADD_PRODUCT",
+    type: "ADD_MENU_ITEM",
     payload: {
-      id: id
+      item
     }
   };
 }
@@ -86,7 +86,7 @@ function reset() {
 }
 
 export {
-  addProduct,
+  addMenuItem,
   listRestaurants,
   selectRestaurant,
   removeProduct,
