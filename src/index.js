@@ -11,6 +11,7 @@ import Home from "./views/home";
 import Navbar from "./components/navbar";
 import store from "./store";
 import Ubication from "./views/ubication";
+import { register} from "./serviceWorker"
 
 const global = {
   body: {
@@ -50,3 +51,4 @@ render(
   </Provider>,
   $root
 );
+register();
