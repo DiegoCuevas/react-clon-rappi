@@ -4,9 +4,9 @@ import React from "react";
 import { Redirect } from "@reach/router";
 
 import ListProducts from "../components/listProducts";
-import { useUser, useRestaurant } from "../selectors";
+import { useUser, useRestaurant, useCart } from "../selectors";
 
-import { useSelectRestaurant } from "../action-hooks";
+import { useSelectRestaurant, useResetCart } from "../action-hooks";
 
 const header = {
   display: "flex",
@@ -69,10 +69,28 @@ const img = {
 function Restaurant({ id }) {
   const selectRestaurant = useSelectRestaurant();
   const restaurant = useRestaurant();
+  const resetCart = useResetCart();
+  const cart = useCart();
 
   React.useEffect(() => {
     selectRestaurant(id);
   }, []);
+
+  React.useEffect(() => {
+    window.onpopstate = function() {
+      if (Object.keys(cart).length > 0) {
+        if (window.confirm("Leaving the restaurant will reset your card")) {
+          resetCart();
+        } else {
+          window.history.go(1);
+        }
+      }
+    };
+
+    return () => {
+      window.onpopstate = null;
+    };
+  });
 
   const user = useUser();
   if (!user) return <Redirect to="login" noThrow />;
@@ -88,7 +106,6 @@ function Restaurant({ id }) {
           />
         </div>
         <div css={data}>
-          {/* {console.log(restaurant)} */}
           <h1 css={title}>{restaurant.name}</h1>
           <span css={hours}>08:30 am - 11:30 pm</span>
           <div css={infoDelivery}>

@@ -9,7 +9,8 @@ import {
   deleteFromCart,
   reset,
   login,
-  logout
+  logout,
+  resetCart
 } from "./actions";
 
 export function useLogin() {
@@ -22,6 +23,11 @@ export function useLogout() {
   return React.useCallback(() => dispatch(logout()), [dispatch]);
 }
 
+export function useResetCart() {
+  const dispatch = useDispatch();
+  return React.useCallback(() => dispatch(resetCart()), [dispatch]);
+}
+
 export function useAddMenuItem() {
   const dispatch = useDispatch();
   return React.useCallback(item => dispatch(addMenuItem(item)), [dispatch]);
@@ -29,7 +35,9 @@ export function useAddMenuItem() {
 
 export function useDecreaseQuantity() {
   const dispatch = useDispatch();
-  return React.useCallback(item => dispatch(decreaseQuantity(item)), [dispatch]);
+  return React.useCallback(item => dispatch(decreaseQuantity(item)), [
+    dispatch
+  ]);
 }
 
 export function useDeleteFromCart() {
