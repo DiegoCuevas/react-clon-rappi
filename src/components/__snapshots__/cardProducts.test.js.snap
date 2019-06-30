@@ -49,7 +49,7 @@ exports[`cardProduct component 1`] = `
 
 .emotion-0 {
   position: relative;
-  width: 124px;
+  width: 100%;
 }
 
 .emotion-5 {
