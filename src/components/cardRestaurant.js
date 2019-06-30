@@ -67,7 +67,8 @@ const data = {
 
 const restaurantImg = {
   position: "relative",
-  width: "124px"
+  width: "124px",
+  flex: "0 0 124px"
 };
 
 const img = {

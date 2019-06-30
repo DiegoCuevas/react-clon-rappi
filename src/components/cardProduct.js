@@ -57,7 +57,7 @@ const card = {
   "@media (max-width: 768px)": {
     borderRadius: "0px",
     borderTop: "1px solid #e5edef",
-    borderButtom: "1px solid #e5edef"
+    borderButtom: "1px solid #e5edef",
   }
 };
 
@@ -67,7 +67,7 @@ const data = {
 
 const restaurantImg = {
   position: "relative",
-  width: "124px"
+  width: "100%"
 };
 
 const img = {
