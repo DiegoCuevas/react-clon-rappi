@@ -84,7 +84,6 @@ function Cart({ id }) {
         order_items_attributes: itemsOrdered
       }
     };
-    console.log(orderItems);
 
     addOrder(orderItems);
   }

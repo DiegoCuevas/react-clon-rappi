@@ -16,7 +16,7 @@ function reducer(state = initialState, action = {}) {
         user: action.payload
       };
     }
-    
+
     case "LOGOUT": {
       return {
         ...state,
@@ -113,12 +113,14 @@ function reducer(state = initialState, action = {}) {
     case "GET_ORDERS": {
       return {
         ...state,
-        orders: action.payload.reduce((orders, order) => {
-          return {
-            ...orders,
-            [order.id]: order
-          };
-        }, {})
+        orders:
+          action.payload &&
+          action.payload.reduce((orders, order) => {
+            return {
+              ...orders,
+              [order.id]: order
+            };
+          }, {})
       };
     }
 
