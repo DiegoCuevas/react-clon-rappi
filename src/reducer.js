@@ -2,40 +2,10 @@ const initialState = {
   user: null,
   cart: {},
   restaurant: { name: "default", menu_items: [] },
-  restaurants: [
-    {
-      id: 0,
-      name: "Mc Donalds",
-      description: "Healthy food"
-    },
-    {
-      id: 1,
-      name: "Venomous",
-      description: "Healthy food"
-    }
-  ],
-  products: [
-    {
-      id: 0,
-      name: "Hamburgesa",
-      restId: 0
-    },
-    {
-      id: 1,
-      name: "Hamburgesa",
-      restId: 1
-    },
-    {
-      id: 2,
-      name: "Hamburgesa",
-      restId: 0
-    },
-    {
-      id: 3,
-      name: "Hamburgesa",
-      restId: 1
-    }
-  ]
+  restaurants: [],
+  products: [],
+  orders: [],
+  order: {}
 };
 
 function reducer(state = initialState, action = {}) {
@@ -122,6 +92,32 @@ function reducer(state = initialState, action = {}) {
       return {
         ...state,
         cart: cartUpdated
+      };
+    }
+
+    case "ADD_ORDER": {
+      return {
+        ...state,
+        order: action.payload
+      };
+    }
+
+    case "UPDATE_ORDER": {
+      return {
+        ...state,
+        order: action.payload
+      };
+    }
+
+    case "GET_ORDERS": {
+      return {
+        ...state,
+        orders: action.payload.reduce((orders, order) => {
+          return {
+            ...orders,
+            [order.id]: order
+          };
+        }, {})
       };
     }
 
