@@ -47,6 +47,10 @@ function useCartProducts() {
   return useSelector(state => Object.values(state.cart), shallowEqual);
 }
 
+function useOrders() {
+  return useSelector(state => state.orders, shallowEqual);
+}
+
 export {
   useRestaurants,
   usePosition,
@@ -54,5 +58,6 @@ export {
   useUser,
   useRestaurant,
   useGetOrder,
-  useCartProducts
+  useCartProducts,
+  useOrders
 };

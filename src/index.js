@@ -12,6 +12,7 @@ import Navbar from "./components/navbar";
 import store from "./store";
 import Ubication from "./views/ubication";
 import { register} from "./serviceWorker"
+import Orders from "./views/orders"
 
 const global = {
   body: {
@@ -32,6 +33,7 @@ function App() {
       <Navbar />
       <main css={main}>
         <Router>
+          <Orders path="/orders"/>
           <Cart path="/cart/:id" />
           <Login path="/login" />
           <Home path="/" />

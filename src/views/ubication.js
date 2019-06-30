@@ -3,7 +3,7 @@ import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { jsx } from "@emotion/core";
-import { Redirect } from "@reach/router";
+import { Redirect, Link } from "@reach/router";
 import { useUser, useGetOrder } from "../selectors";
 import { useUpdateOrder } from "../action-hooks";
 import MarkerRestaurant from "../components/markerRestaurant";
@@ -69,7 +69,6 @@ function Ubication({ id }) {
         </Marker>
         <MarkerRestaurant id={id} />
       </Map>
-
       <button
         css={{
           margin: "20px",
@@ -80,9 +79,14 @@ function Ubication({ id }) {
           border: "none",
           color: "white"
         }}
-        onClick={handleUpdate}
       >
-        Confirm reception
+        <Link
+          css={{ textDecoration: "none", color: "white  " }}
+          onClick={handleUpdate}
+          to="/orders"
+        >
+          Confirm reception
+        </Link>
       </button>
     </>
   );
