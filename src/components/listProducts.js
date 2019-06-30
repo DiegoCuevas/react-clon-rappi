@@ -15,12 +15,15 @@ function ListProducts() {
   return (
     <section css={container}>
       {restaurant.menu_items.map(product => {
+
+
         return (
           <CardProduct
             product={product}
             key={product.id}
             idRestaurant={restaurant.id}
           />
+          
         );
       })}
     </section>

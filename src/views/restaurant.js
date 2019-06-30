@@ -108,6 +108,9 @@ function Restaurant({ id }) {
         <div css={data}>
           <h1 css={title}>{restaurant.name}</h1>
           <span css={hours}>08:30 am - 11:30 pm</span>
+          <span css={hours}>
+            {restaurant.address && restaurant.address.name}
+          </span>
           <div css={infoDelivery}>
             <div css={info}>
               <span>Domicilio:</span>

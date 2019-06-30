@@ -2,7 +2,7 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
-import { useAddMenuItem } from "../action-hooks"
+import { useAddMenuItem } from "../action-hooks";
 import { Card } from "./ui";
 import { id } from "postcss-selector-parser";
 
@@ -80,9 +80,9 @@ const img = {
 
 function CardProduct({ idRestaurant, product }) {
   const addMenuItem = useAddMenuItem();
-  
+
   function handleClick(item) {
-  addMenuItem(item);
+    addMenuItem(item);
   }
 
   return (
@@ -97,10 +97,12 @@ function CardProduct({ idRestaurant, product }) {
             />
           </div>
           <div css={data}>
+            {console.log(product)}
             <span css={name}>{product.name}</span>
-            <span css={description}>Desayuno - Internacional</span>
+            <span css={description}>{product.description}</span>
             <span css={info}>
-              Envio S/. 6.65 <span css={separetor}>●</span> 50 min{" "}
+              Envio S/. {product.price} <span css={separetor}>●</span>{" "}
+              {product.estimated_time} min{" "}
             </span>
             <button onClick={() => handleClick(product)}>Add to cart!</button>
           </div>
