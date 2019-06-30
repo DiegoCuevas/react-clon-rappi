@@ -5,11 +5,19 @@ import { Link } from "@reach/router";
 import { Redirect } from "@reach/router";
 
 import CardProduct from "../components/cardProduct";
-import { useUser, useCart, useRestaurant } from "../selectors";
+import {
+  useUser,
+  useCart,
+  useRestaurant,
+  useGetOrder,
+  useCartProducts
+} from "../selectors";
 import {
   useAddMenuItem,
   useDecreaseQuantity,
-  useDeleteFromCart
+  useDeleteFromCart,
+  useUpdateOrder,
+  useAddOrder
 } from "../action-hooks";
 
 const linkStyle = {
@@ -21,8 +29,10 @@ function Cart({ id }) {
   const user = useUser();
   const cart = useCart();
   const addMenuItem = useAddMenuItem();
+  const cartProducts = useCartProducts();
   const decreaseQuantity = useDecreaseQuantity();
   const deleteFromCart = useDeleteFromCart();
+  const addOrder = useAddOrder();
   const restaurant = useRestaurant();
 
   const redirect = `/ubication/${id}`;
@@ -62,6 +72,21 @@ function Cart({ id }) {
     if (item.quantity > 1) {
       decreaseQuantity(item);
     } else deleteFromCart(item);
+  }
+
+  function handleConfirmation() {
+    const itemsOrdered = cartProducts.map(product => {
+      return { menu_item_id: product.id, quantity: product.quantity };
+    });
+    const orderItems = {
+      order: {
+        restaurant_id: restaurant.id,
+        order_items_attributes: itemsOrdered
+      }
+    };
+    console.log(orderItems);
+
+    addOrder(orderItems);
   }
 
   if (!user) return <Redirect to="login" noThrow />;
@@ -120,6 +145,7 @@ function Cart({ id }) {
             color: "white"
           }}
           to={redirect}
+          onClick={() => handleConfirmation()}
         >
           Confirm
         </Link>

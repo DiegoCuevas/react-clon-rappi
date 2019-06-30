@@ -1,6 +1,10 @@
 import React from "react";
 import { useSelector, shallowEqual } from "react-redux";
 
+function useGetOrder() {
+  return useSelector(state => state.order, shallowEqual);
+}
+
 function useRestaurants() {
   return useSelector(state => Object.values(state.restaurants), shallowEqual);
 }
@@ -39,4 +43,16 @@ function useUser() {
   }, shallowEqual);
 }
 
-export { useRestaurants, usePosition, useCart, useUser, useRestaurant };
+function useCartProducts() {
+  return useSelector(state => Object.values(state.cart), shallowEqual);
+}
+
+export {
+  useRestaurants,
+  usePosition,
+  useCart,
+  useUser,
+  useRestaurant,
+  useGetOrder,
+  useCartProducts
+};
