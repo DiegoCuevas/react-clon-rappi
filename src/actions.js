@@ -1,6 +1,7 @@
 const API_LOGIN_URL = "http://localhost:4000/api/login";
 const API_LOGOUT_URL = "http://localhost:4000/api/logout";
 const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
+const API_ORDERS_URL = "http://localhost:4000/api/orders"
 
 function selectRestaurant(id) {
   return async dispatch => {

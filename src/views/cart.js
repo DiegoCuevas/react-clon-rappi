@@ -2,7 +2,7 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import CardProduct from "../components/cardProduct";
-import { useUser, useCart } from "../selectors";
+import { useUser, useCart, useRestaurant } from "../selectors";
 import {
   useAddMenuItem,
   useDecreaseQuantity,
@@ -16,7 +16,10 @@ function Cart() {
   const addMenuItem = useAddMenuItem();
   const decreaseQuantity = useDecreaseQuantity();
   const deleteFromCart = useDeleteFromCart();
+  const restaurant = useRestaurant();
 
+  
+  
   const cssOrden = {
     display: "flex",
     justifyContent: "space-between",
