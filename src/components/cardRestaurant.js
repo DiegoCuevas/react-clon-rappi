@@ -91,8 +91,12 @@ function CardRestaurant(restaurant) {
             />
           </div>
           <div css={data}>
+            {console.log(restaurant)}
             <span css={name}>{restaurant.restaurant.name}</span>
-            <span css={description}>Desayuno - Internacional</span>
+            <span css={description}>
+              {restaurant.restaurant.address &&
+                restaurant.restaurant.address.name}
+            </span>
             <span css={info}>
               Envio S/. 6.65 <span css={separetor}>●</span> 50 min{" "}
             </span>
