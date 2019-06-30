@@ -67,6 +67,13 @@ function reducer(state = initialState, action = {}) {
       };
     }
 
+    case "RESET_CART": {
+      state.cart = {};
+      return {
+        ...state,
+        cart: {}
+      };
+    }
 
     case "ADD_MENU_ITEM": {
       const findMenuItem = state.cart[action.payload.item.id];
@@ -84,14 +91,14 @@ function reducer(state = initialState, action = {}) {
       }
       return {
         ...state,
-          cart: {
-            ...state.cart,
-            [action.payload.item.id]: {
-              ...findMenuItem,
-              quantity: findMenuItem.quantity + 1
-            }
+        cart: {
+          ...state.cart,
+          [action.payload.item.id]: {
+            ...findMenuItem,
+            quantity: findMenuItem.quantity + 1
           }
-      }
+        }
+      };
     }
 
     case "DECREASE_QUANTITY": {
@@ -117,7 +124,7 @@ function reducer(state = initialState, action = {}) {
         cart: cartUpdated
       };
     }
-    
+
     case "RESET": {
       return initialState;
     }

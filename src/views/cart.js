@@ -36,12 +36,12 @@ function Cart() {
     display: "flex",
     justifyContent: "space-between",
     padding: "2px 5px",
-    marginLeft: "auto",
+    marginLeft: "auto"
   };
 
   const styleButtonPlusMinus = {
     cursor: "pointer",
-    color: "#3AC69F",
+    color: "#3AC69F"
   };
 
   function handleClick(item) {
@@ -64,7 +64,7 @@ function Cart() {
       >
         {Object.values(cart).map(element => {
           return (
-            <article css={cssOrden} >
+            <article css={cssOrden} key={element.id}>
               <span>{element.name}</span>
               <div css={styleButtonQuantity}>
                 <span
@@ -74,11 +74,16 @@ function Cart() {
                   -
                 </span>
                 <span>{element.quantity}</span>
-                <span css={styleButtonPlusMinus} onClick={() => handleClick(element)}>
+                <span
+                  css={styleButtonPlusMinus}
+                  onClick={() => handleClick(element)}
+                >
                   +
                 </span>
               </div>
-              <div css={{width: "80px"}}><span>$/. {element.price * element.quantity}</span></div>
+              <div css={{ width: "80px" }}>
+                <span>$/. {element.price * element.quantity}</span>
+              </div>
             </article>
           );
         })}
@@ -86,7 +91,8 @@ function Cart() {
         <article css={cssResult}>
           <span css={{ margin: "10px" }}>Total</span>{" "}
           <span css={{ margin: "10px" }}>
-            $/. {Object.values(cart).reduce((acc, item) => {
+            $/.{" "}
+            {Object.values(cart).reduce((acc, item) => {
               return acc + item.quantity * item.price;
             }, 0)}
           </span>
