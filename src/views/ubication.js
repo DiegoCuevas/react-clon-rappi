@@ -3,7 +3,7 @@ import React from "react";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import { jsx } from "@emotion/core";
-import { Redirect } from "@reach/router";
+import { Redirect, navigate } from "@reach/router";
 import { useUser } from "../selectors";
 import MarkerRestaurant from "../components/markerRestaurant";
 const container = {
@@ -38,28 +38,53 @@ function Ubication({ id }) {
     setZoomState(mapRef.current.leafletElement.getZoom());
   };
 
+  async function handleComplete() {
+    const response = await fetch(
+      // `http://localhost:4000/api/orders/${currentOrder.id}`,
+      `http://localhost:4000/api/orders/${1}`,
+      {
+        method: "PUT",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json"
+        }
+      }
+    );
+    if (!response.ok) throw new Error("Error on Post new orders");
+    const order = await response.json();
+    console.log("PUT", order);
+    // This is for to clear prder.
+    // updateCurrentOrder({});
+    navigate("/");
+  }
+
   const map = (
-    <Map
-      css={container}
-      center={position}
-      zoom={zoomState}
-      ref={mapRef}
-      onzoomend={handleOnZoom}
-    >
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={markerPeople}>
-        <Popup>
-          You are here!
-          <span role="img" aria-label="emoji dot position">
-            👨‍🎤
-          </span>
-        </Popup>
-      </Marker>
-      <MarkerRestaurant id={id} />
-    </Map>
+    <>
+      <Map
+        css={container}
+        center={position}
+        zoom={zoomState}
+        ref={mapRef}
+        onzoomend={handleOnZoom}
+      >
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position} icon={markerPeople}>
+          <Popup>
+            You are here!
+            <span role="img" aria-label="emoji dot position">
+              👨‍🎤
+            </span>
+          </Popup>
+        </Marker>
+        <MarkerRestaurant id={id} />
+      </Map>
+      <div>
+        <button onClick={handleComplete}>COMPLETE</button>
+      </div>
+    </>
   );
 
   return map;
