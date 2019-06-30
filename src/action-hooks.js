@@ -10,7 +10,10 @@ import {
   reset,
   login,
   logout,
-  resetCart
+  resetCart,
+  addOrder,
+  updateOrder,
+  getOrders
 } from "./actions";
 
 export function useLogin() {
@@ -58,4 +61,19 @@ export function useListRestaurants() {
 export function useSelectRestaurant() {
   const dispatch = useDispatch();
   return React.useCallback(id => dispatch(selectRestaurant(id)), [dispatch]);
+}
+
+export function useAddOrder() {
+  const dispatch = useDispatch();
+  return React.useCallback(order => dispatch(addOrder(order)), [dispatch]);
+}
+
+export function useUpdateOrder() {
+  const dispatch = useDispatch();
+  return React.useCallback(id => dispatch(updateOrder(id)), [dispatch]);
+}
+
+export function useGetOrders() {
+  const dispatch = useDispatch();
+  return React.useCallback(() => dispatch(getOrders()), [dispatch]);
 }

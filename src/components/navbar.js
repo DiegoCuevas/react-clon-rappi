@@ -2,6 +2,7 @@
 import React from "react";
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
+import { useCart, useRestaurant } from "../selectors";
 
 const container = {
   borderBottom: "1px solid rgba(0,0,0,.0975)",
@@ -37,6 +38,9 @@ const img = {
 };
 
 function Nabvar() {
+  const cart = useCart();
+  const restaurant = useRestaurant();
+
   return (
     <nav css={container}>
       <ul css={ul}>
@@ -57,8 +61,20 @@ function Nabvar() {
           }}
         >
           <li>
-            <Link css={linkStyle} to="/cart">
-              <span css={center}>Cart</span>
+            <Link css={linkStyle} to={"/cart/" + restaurant.id}>
+              <div css={center}>
+                <span>Cart </span>
+                <span
+                  css={{
+                    marginLeft: "5px",
+                    marginRight: "10px",
+                    fontWeight: "bolder",
+                    color: "rgb(31, 184, 44)"
+                  }}
+                >
+                  {Object.values(cart).length}
+                </span>
+              </div>
             </Link>
           </li>
           <li>
