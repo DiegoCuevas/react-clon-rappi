@@ -4,21 +4,28 @@ import CardProduct from "../components/cardProduct";
 
 import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
+import { Redirect } from "@reach/router";
 import { useUser, useCart, useRestaurant } from "../selectors";
 import {
   useAddMenuItem,
   useDecreaseQuantity,
   useDeleteFromCart
 } from "../action-hooks";
-import { Redirect } from "@reach/router";
 
-function Cart() {
+const linkStyle = {
+  textDecoration: "none",
+  color: "#000"
+};
+
+function Cart({ id }) {
   const user = useUser();
   const cart = useCart();
   const addMenuItem = useAddMenuItem();
   const decreaseQuantity = useDecreaseQuantity();
   const deleteFromCart = useDeleteFromCart();
   const restaurant = useRestaurant();
+
+  const redirect = `/ubication/${id}`;
 
   const cssOrden = {
     display: "flex",
@@ -112,9 +119,9 @@ function Cart() {
             border: "none",
             color: "white"
           }}
-          to={"/ubication/" + restaurant.id}
+          to={redirect}
         >
-          Confirm{" "}
+          Confirm
         </Link>
       </section>
     </>

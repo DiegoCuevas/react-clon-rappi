@@ -36,19 +36,6 @@ const img = {
   width: "80px"
 };
 
-// mobile
-// ul Padre
-// position: relative;
-//  li login
-// display: flex;
-// justify-self: fl;
-// align-items: center;
-// position: absolute;
-// right: 16px;
-// bottom: 0;
-// top: 0;
-// margin: auto;
-
 function Nabvar() {
   return (
     <nav css={container}>
@@ -62,11 +49,24 @@ function Nabvar() {
             />
           </Link>
         </li>
-        <li>
-          <Link css={linkStyle} to="/login">
-            <span css={center}>Login</span>
-          </Link>
-        </li>
+        <div
+          css={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100px"
+          }}
+        >
+          <li>
+            <Link css={linkStyle} to="/cart">
+              <span css={center}>Cart</span>
+            </Link>
+          </li>
+          <li>
+            <Link css={linkStyle} to="/login">
+              <span css={center}>Logout</span>
+            </Link>
+          </li>
+        </div>
       </ul>
     </nav>
   );

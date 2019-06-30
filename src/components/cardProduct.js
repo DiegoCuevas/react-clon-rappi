@@ -4,7 +4,6 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 import { useAddMenuItem } from "../action-hooks";
 import { Card } from "./ui";
-import { id } from "postcss-selector-parser";
 
 const name = {
   fontSize: "16px",
@@ -80,6 +79,7 @@ const img = {
 
 function CardProduct({ idRestaurant, product }) {
   const addMenuItem = useAddMenuItem();
+  const redirect = `/cart/${idRestaurant}`;
 
   function handleClick(item) {
     addMenuItem(item);
@@ -87,33 +87,25 @@ function CardProduct({ idRestaurant, product }) {
 
   return (
     <>
-      <Link css={linkStyle} to="/cart">
+      <Link css={linkStyle} to={redirect}>
         <Card css={card}>
           <div css={restaurantImg}>
             <img
-              css={img}
-              src="https://images.rappi.pe/restaurants_background/1839-1556640864.png?d=200x200&e=webp"
+              src="https://images.rappi.pe/restaurants_background/1839-1556640864.png?d=124x124&e=webp"
               alt="restaurant"
             />
           </div>
-          <div css={data}>
+          <div
+            css={data}
+            onClick={() => handleClick(product)}
+            title="Click for add new product"
+          >
             <span css={name}>{product.name}</span>
-            <span css={description}>Desayuno - Internacional</span>
+            <span css={description}>{product.description}</span>
             <span css={info}>
-              Envio S/. 6.65 <span css={separetor}>●</span> 50 min{" "}
+              Envio S/. {product.price} <span css={separetor}>●</span>{" "}
+              {product.estimated_time} min{" "}
             </span>
-            <button
-              css={{
-                margin: "5px",
-                padding: "5px",
-                backgroundColor: "rgb(30, 198, 159)",
-                border: "none",
-                color: "white"
-              }}
-              onClick={() => handleClick(product)}
-            >
-              Add to cart!
-            </button>
           </div>
         </Card>
       </Link>
