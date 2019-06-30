@@ -31,7 +31,7 @@ function App() {
       <Navbar />
       <main css={main}>
         <Router>
-          <Cart path="/cart" />
+          <Cart path="/cart/:id" />
           <Login path="/login" />
           <Home path="/" />
           <Restaurant path="/restaurant/:id" />

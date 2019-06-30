@@ -1,6 +1,9 @@
 /** @jsx jsx */
 import React from "react";
 import { jsx } from "@emotion/core";
+import { Link } from "@reach/router";
+import { Redirect } from "@reach/router";
+
 import CardProduct from "../components/cardProduct";
 import { useUser, useCart, useRestaurant } from "../selectors";
 import {
@@ -8,9 +11,13 @@ import {
   useDecreaseQuantity,
   useDeleteFromCart
 } from "../action-hooks";
-import { Redirect } from "@reach/router";
 
-function Cart() {
+const linkStyle = {
+  textDecoration: "none",
+  color: "#000"
+};
+
+function Cart({ id }) {
   const user = useUser();
   const cart = useCart();
   const addMenuItem = useAddMenuItem();
@@ -100,7 +107,11 @@ function Cart() {
             }, 0)}
           </span>
         </article>
-        <button css={{ margin: "20px" }}>Continue</button>
+        <button css={{ margin: "20px" }}>
+          <Link css={linkStyle} to="/ubication/1">
+            Continue
+          </Link>
+        </button>
       </section>
     </>
   );

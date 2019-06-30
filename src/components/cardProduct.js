@@ -4,7 +4,6 @@ import { jsx } from "@emotion/core";
 import { Link } from "@reach/router";
 import { useAddMenuItem } from "../action-hooks";
 import { Card } from "./ui";
-import { id } from "postcss-selector-parser";
 
 const name = {
   fontSize: "16px",
@@ -80,6 +79,7 @@ const img = {
 
 function CardProduct({ idRestaurant, product }) {
   const addMenuItem = useAddMenuItem();
+  const redirect = `/cart/${idRestaurant}`;
 
   function handleClick(item) {
     addMenuItem(item);
@@ -87,7 +87,7 @@ function CardProduct({ idRestaurant, product }) {
 
   return (
     <>
-      <Link css={linkStyle} to="/cart">
+      <Link css={linkStyle} to={redirect}>
         <Card css={card}>
           <div css={restaurantImg}>
             <img
