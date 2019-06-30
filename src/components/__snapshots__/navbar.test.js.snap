@@ -2,12 +2,12 @@
 
 exports[`Navbar component 1`] = `
 <DocumentFragment>
-  .emotion-6 {
+  .emotion-9 {
   border-bottom: 1px solid rgba(0,0,0,.0975);
   margin-bottom: 2em;
 }
 
-.emotion-5 {
+.emotion-8 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -52,11 +52,23 @@ exports[`Navbar component 1`] = `
   width: 80px;
 }
 
+.emotion-7 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  width: 100px;
+}
+
 <nav
-    class="emotion-6"
+    class="emotion-9"
   >
     <ul
-      class="emotion-5"
+      class="emotion-8"
     >
       <li
         class="emotion-2"
@@ -73,18 +85,34 @@ exports[`Navbar component 1`] = `
           />
         </a>
       </li>
-      <li>
-        <a
-          class="emotion-1"
-          href="/login"
-        >
-          <span
-            class="emotion-2"
+      <div
+        class="emotion-7"
+      >
+        <li>
+          <a
+            class="emotion-1"
+            href="/cart"
           >
-            Login
-          </span>
-        </a>
-      </li>
+            <span
+              class="emotion-2"
+            >
+              Cart
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="emotion-1"
+            href="/login"
+          >
+            <span
+              class="emotion-2"
+            >
+              Logout
+            </span>
+          </a>
+        </li>
+      </div>
     </ul>
   </nav>
 </DocumentFragment>
