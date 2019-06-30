@@ -5,6 +5,18 @@ import { useGetOrders, listRestaurants } from "../action-hooks";
 import { useGetOrder, useRestaurants, useUser, useOrders } from "../selectors";
 import { Redirect } from "@reach/router";
 
+const linkStyle = {
+  textDecoration: "none",
+  border: "1px solid",
+
+  color: "#000",
+  margin: "10px 5px",
+  minWidth: "30%",
+  "@media (max-width: 768px)": {
+    minWidth: "100%"
+  }
+};
+
 function Orders() {
   const user = useUser();
   const restaurants = useRestaurants();
@@ -22,7 +34,7 @@ function Orders() {
       {Object.values(orders).length > 0 ? (
         Object.values(orders).map(order => {
           return (
-            <section key={order.id}>
+            <section css={linkStyle} key={order.id}>
               <div css={{ marginLeft: "1em" }}>
                 <p>
                   Restaurant:{" "}

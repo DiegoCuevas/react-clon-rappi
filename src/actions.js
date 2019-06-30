@@ -22,7 +22,6 @@ function resetCart() {
   return { type: "RESET_CART" };
 }
 
-
 function login(user) {
   return async dispatch => {
     const response = await fetch(API_LOGIN_URL, {
@@ -126,7 +125,9 @@ function updateOrder(id) {
       }
     });
     if (!response.ok) return { type: "DEFAULT" };
-    const payload = await response.json();
+    let payload = await response.json();
+    if (!payload) payload = [];
+
     dispatch({ type: "UPDATE_ORDER", payload });
   };
 }
