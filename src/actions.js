@@ -22,6 +22,7 @@ function resetCart() {
   return { type: "RESET_CART" };
 }
 
+
 function login(user) {
   return async dispatch => {
     const response = await fetch(API_LOGIN_URL, {
