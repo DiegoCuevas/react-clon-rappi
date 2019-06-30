@@ -47,16 +47,34 @@ exports[`cardProduct component 1`] = `
   }
 }
 
+<<<<<<< HEAD
 .emotion-0 {
+=======
+.emotion-1 {
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
   position: relative;
   width: 124px;
 }
 
+<<<<<<< HEAD
+=======
+.emotion-0 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: .5em 0 0 .5em;
+}
+
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
 .emotion-6 {
   padding: 10px;
 }
 
+<<<<<<< HEAD
 .emotion-1 {
+=======
+.emotion-2 {
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
   font-size: 16px;
   color: #333;
   font-weight: 400;
@@ -66,7 +84,11 @@ exports[`cardProduct component 1`] = `
   display: block;
 }
 
+<<<<<<< HEAD
 .emotion-2 {
+=======
+.emotion-3 {
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
   font-size: 12px;
   color: #9faab7;
   margin: 0;
@@ -77,14 +99,22 @@ exports[`cardProduct component 1`] = `
   overflow: hidden;
 }
 
+<<<<<<< HEAD
 .emotion-4 {
+=======
+.emotion-5 {
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
   font-size: 12px;
   line-height: 20px;
   color: #333;
   text-align: right;
 }
 
+<<<<<<< HEAD
 .emotion-3 {
+=======
+.emotion-4 {
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
   color: #9faab7;
   display: inline-block;
   vertical-align: top;
@@ -92,6 +122,7 @@ exports[`cardProduct component 1`] = `
   padding: 0 5px;
 }
 
+<<<<<<< HEAD
 .emotion-5 {
   margin: 5px;
   padding: 5px;
@@ -103,28 +134,49 @@ exports[`cardProduct component 1`] = `
 <a
     class="emotion-8"
     href="/cart/1"
+=======
+<a
+    class="emotion-8"
+    href="/ubication/1"
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
   >
     <div
       class="emotion-7"
     >
       <div
+<<<<<<< HEAD
         class="emotion-0"
       >
         <img
           alt="restaurant"
           src="https://images.rappi.pe/restaurants_background/1839-1556640864.png?d=124x124&e=webp"
+=======
+        class="emotion-1"
+      >
+        <img
+          alt="restaurant"
+          class="emotion-0"
+          src="https://images.rappi.pe/restaurants_background/1839-1556640864.png?d=200x200&e=webp"
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
         />
       </div>
       <div
         class="emotion-6"
+<<<<<<< HEAD
         title="Click for add new product"
       >
         <span
           class="emotion-1"
+=======
+      >
+        <span
+          class="emotion-2"
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
         >
           Product-1
         </span>
         <span
+<<<<<<< HEAD
           class="emotion-2"
         />
         <span
@@ -143,6 +195,23 @@ exports[`cardProduct component 1`] = `
         >
           Add to cart!
         </button>
+=======
+          class="emotion-3"
+        >
+          Desayuno - Internacional
+        </span>
+        <span
+          class="emotion-5"
+        >
+          Envio S/. 6.65 
+          <span
+            class="emotion-4"
+          >
+            ●
+          </span>
+           50 min 
+        </span>
+>>>>>>> b40b17746d4d5ce37cad312d283417344bb60be6
       </div>
     </div>
   </a>
