@@ -92,7 +92,6 @@ function CardRestaurant(restaurant) {
             />
           </div>
           <div css={data}>
-            {console.log(restaurant)}
             <span css={name}>{restaurant.restaurant.name}</span>
             <span css={description}>
               {restaurant.restaurant.address &&

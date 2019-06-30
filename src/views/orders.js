@@ -13,8 +13,6 @@ function Orders() {
     getOrders();
   }, [getOrders]);
   const orders = useOrders();
-  console.log("-------------------------");
-  console.log(orders);
   function getRestaurant(id) {
     return restaurants.find(rest => rest.id === id);
   }
@@ -26,7 +24,6 @@ function Orders() {
           return (
             <section key={order.id}>
               <div css={{ marginLeft: "1em" }}>
-                <p>Order id: {order.id}</p>
                 <p>
                   Restaurant:{" "}
                   {getRestaurant(order.restaurant_id) &&

@@ -50,6 +50,9 @@ exports[`cardRestaurant component 1`] = `
 .emotion-1 {
   position: relative;
   width: 124px;
+  -webkit-flex: 0 0 124px;
+  -ms-flex: 0 0 124px;
+  flex: 0 0 124px;
 }
 
 .emotion-0 {
