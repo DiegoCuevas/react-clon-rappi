@@ -1,0 +1,144 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`cardRestaurant component 1`] = `
+<DocumentFragment>
+  .emotion-8 {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #000;
+  margin: 10px 5px;
+  min-width: 30%;
+}
+
+@media (max-width:768px) {
+  .emotion-8 {
+    min-width: 100%;
+  }
+}
+
+.emotion-7 {
+  border-radius: .5em;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  padding: 15px;
+  width: 100%;
+  -webkit-transition-property: all;
+  transition-property: all;
+  -webkit-transition-duration: 0.25s;
+  transition-duration: 0.25s;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 0;
+}
+
+.emotion-7:hover {
+  cursor: pointer;
+  border: 1px solid #e5edef;
+  box-shadow: -1px 2px 5px 0px rgba(0,0,0,.12);
+}
+
+@media (max-width:768px) {
+  .emotion-7 {
+    border-radius: 0px;
+    border-top: 1px solid #e5edef;
+    border-buttom: 1px solid #e5edef;
+  }
+}
+
+.emotion-1 {
+  position: relative;
+  width: 124px;
+}
+
+.emotion-0 {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  border-radius: .5em 0 0 .5em;
+}
+
+.emotion-6 {
+  padding: 10px;
+}
+
+.emotion-2 {
+  font-size: 16px;
+  color: #333;
+  font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+}
+
+.emotion-3 {
+  font-size: 12px;
+  color: #9faab7;
+  margin: 0;
+  min-height: 12px;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.emotion-5 {
+  font-size: 12px;
+  line-height: 20px;
+  color: #333;
+  text-align: right;
+}
+
+.emotion-4 {
+  color: #9faab7;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 5px;
+  padding: 0 5px;
+}
+
+<a
+    class="emotion-8"
+    href="/restaurant/1"
+  >
+    <div
+      class="emotion-7"
+    >
+      <div
+        class="emotion-1"
+      >
+        <img
+          alt="restaurant"
+          class="emotion-0"
+          src="https://images.rappi.pe/restaurants_background/1839-1556640864.png?d=200x200&e=webp"
+        />
+      </div>
+      <div
+        class="emotion-6"
+      >
+        <span
+          class="emotion-2"
+        >
+          Restaurant-1
+        </span>
+        <span
+          class="emotion-3"
+        />
+        <span
+          class="emotion-5"
+        >
+          Envio S/. 6.65 
+          <span
+            class="emotion-4"
+          >
+            ●
+          </span>
+           50 min 
+        </span>
+      </div>
+    </div>
+  </a>
+</DocumentFragment>
+`;
