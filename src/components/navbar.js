@@ -49,11 +49,24 @@ function Nabvar() {
             />
           </Link>
         </li>
-        <li>
-          <Link css={linkStyle} to="/login">
-            <span css={center}>Login</span>
-          </Link>
-        </li>
+        <div
+          css={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100px"
+          }}
+        >
+          <li>
+            <Link css={linkStyle} to="/cart">
+              <span css={center}>Cart</span>
+            </Link>
+          </li>
+          <li>
+            <Link css={linkStyle} to="/login">
+              <span css={center}>Logout</span>
+            </Link>
+          </li>
+        </div>
       </ul>
     </nav>
   );
