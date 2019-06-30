@@ -1,8 +1,10 @@
 /** @jsx jsx */
 import React from "react";
-import { jsx } from "@emotion/core";
 import CardProduct from "../components/cardProduct";
-import { useUser, useCart } from "../selectors";
+
+import { jsx } from "@emotion/core";
+import { Link } from "@reach/router";
+import { useUser, useCart, useRestaurant } from "../selectors";
 import {
   useAddMenuItem,
   useDecreaseQuantity,
@@ -16,10 +18,12 @@ function Cart() {
   const addMenuItem = useAddMenuItem();
   const decreaseQuantity = useDecreaseQuantity();
   const deleteFromCart = useDeleteFromCart();
+  const restaurant = useRestaurant();
 
   const cssOrden = {
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
     margin: "30px"
   };
   const cssResult = {
@@ -81,7 +85,7 @@ function Cart() {
                   +
                 </span>
               </div>
-              <div css={{ width: "80px" }}>
+              <div css={{ width: "80px", marginLeft: "20px" }}>
                 <span>$/. {element.price * element.quantity}</span>
               </div>
             </article>
@@ -97,7 +101,21 @@ function Cart() {
             }, 0)}
           </span>
         </article>
-        <button css={{ margin: "20px" }}>Continue</button>
+
+        <Link
+          css={{
+            margin: "20px",
+            padding: "10px",
+            backgroundColor: "tomato",
+            textDecoration: "none",
+            fontSize: "15px",
+            border: "none",
+            color: "white"
+          }}
+          to={"/ubication/" + restaurant.id}
+        >
+          Confirm{" "}
+        </Link>
       </section>
     </>
   );
