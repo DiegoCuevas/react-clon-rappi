@@ -16,6 +16,7 @@ function reducer(state = initialState, action = {}) {
         user: action.payload
       };
     }
+    
     case "LOGOUT": {
       return {
         ...state,
