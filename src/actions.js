@@ -1,7 +1,7 @@
 const API_LOGIN_URL = "http://localhost:4000/api/login";
 const API_LOGOUT_URL = "http://localhost:4000/api/logout";
 const API_RESTAURANT_URL = "http://localhost:4000/api/restaurants";
-const API_ORDERS_URL = "http://localhost:4000/api/orders"
+const API_ORDERS_URL = "http://localhost:4000/api/orders";
 
 function selectRestaurant(id) {
   return async dispatch => {
@@ -99,6 +99,47 @@ function reset() {
   };
 }
 
+function addOrder(order) {
+  return async dispatch => {
+    const response = await fetch("http://localhost:4000/api/orders", {
+      method: "POST",
+      credentials: "include",
+      body: order ? JSON.stringify(order) : "{}",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    if (!response.ok) return { type: "DEFAULT" };
+    const payload = await response.json();
+    dispatch({ type: "ADD_ORDER", payload });
+  };
+}
+
+function updateOrder(id) {
+  return async dispatch => {
+    const response = await fetch(`http://localhost:4000/api/orders/${id}`, {
+      method: "PUT",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    });
+    if (!response.ok) return { type: "DEFAULT" };
+    const payload = await response.json();
+    dispatch({ type: "UPDATE_ORDER", payload });
+  };
+}
+
+function getOrders() {
+  return async dispatch => {
+    const response = await fetch("http://localhost:4000/api/orders", {
+      credentials: "include"
+    });
+    const payload = await response.json();
+    return dispatch({ type: "GET_ORDERS", payload });
+  };
+}
+
 export {
   addMenuItem,
   listRestaurants,
@@ -108,5 +149,8 @@ export {
   reset,
   login,
   logout,
-  resetCart
+  resetCart,
+  addOrder,
+  updateOrder,
+  getOrders
 };
