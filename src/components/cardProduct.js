@@ -86,26 +86,28 @@ function CardProduct({ idRestaurant, product }) {
   }
 
   return (
-    <>
-      <Link css={linkStyle} to={redirect}>
-        <Card css={card}>
-          <div css={restaurantImg}>
-            <img
-              src="https://images.rappi.pe/restaurants_background/1839-1556640864.png?d=124x124&e=webp"
-              alt="restaurant"
-            />
-          </div>
-          <div css={data} onClick={() => handleClick(product)} title= "Click for add new product">
-            <span css={name}>{product.name}</span>
-            <span css={description}>{product.description}</span>
-            <span css={info}>
-              Envio S/. {product.price} <span css={separetor}>●</span>{" "}
-              {product.estimated_time} min{" "}
-            </span>
-          </div>
-        </Card>
-      </Link>
-    </>
+    <div css={linkStyle}>
+      <Card css={card}>
+        <div css={restaurantImg}>
+          <img
+            src="https://images.rappi.pe/restaurants_background/1839-1556640864.png?d=124x124&e=webp"
+            alt="restaurant"
+          />
+        </div>
+        <div
+          css={data}
+          onClick={() => handleClick(product)}
+          title="Add to cart"
+        >
+          <span css={name}>{product.name}</span>
+          <span css={description}>{product.description}</span>
+          <span css={info}>
+            Envio S/. {product.price} <span css={separetor}>●</span>
+            {product.estimated_time} min
+          </span>
+        </div>
+      </Card>
+    </div>
   );
 }
 

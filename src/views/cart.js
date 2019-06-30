@@ -25,11 +25,12 @@ function Cart({ id }) {
   const deleteFromCart = useDeleteFromCart();
   const restaurant = useRestaurant();
 
-  
-  
+  const redirect = `/ubication/${id}`;
+
   const cssOrden = {
     display: "flex",
     justifyContent: "space-between",
+    alignItems: "center",
     margin: "30px"
   };
   const cssResult = {
@@ -91,7 +92,7 @@ function Cart({ id }) {
                   +
                 </span>
               </div>
-              <div css={{ width: "80px" }}>
+              <div css={{ width: "80px", marginLeft: "20px" }}>
                 <span>$/. {element.price * element.quantity}</span>
               </div>
             </article>
@@ -107,11 +108,21 @@ function Cart({ id }) {
             }, 0)}
           </span>
         </article>
-        <button css={{ margin: "20px" }}>
-          <Link css={linkStyle} to="/ubication/1">
-            Continue
-          </Link>
-        </button>
+
+        <Link
+          css={{
+            margin: "20px",
+            padding: "10px",
+            backgroundColor: "tomato",
+            textDecoration: "none",
+            fontSize: "15px",
+            border: "none",
+            color: "white"
+          }}
+          to={redirect}
+        >
+          Confirm
+        </Link>
       </section>
     </>
   );
