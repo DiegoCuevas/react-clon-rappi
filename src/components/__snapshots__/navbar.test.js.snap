@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Navbar component 1`] = `
+<DocumentFragment>
+  .emotion-6 {
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  margin-bottom: 2em;
+}
+
+.emotion-5 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -webkit-align-item: center;
+  -webkit-box-align-item: center;
+  -ms-flex-align-item: center;
+  align-item: center;
+  margin: 0 auto;
+  padding: .5em 1.5em;
+  list-style: none;
+  color: #fff;
+}
+
+.emotion-2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.emotion-1 {
+  margin-right: 1em;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  color: #000;
+}
+
+.emotion-1:hover {
+  color: #003569;
+}
+
+.emotion-0 {
+  width: 80px;
+}
+
+<nav
+    class="emotion-6"
+  >
+    <ul
+      class="emotion-5"
+    >
+      <li
+        class="emotion-2"
+      >
+        <a
+          aria-current="page"
+          class="emotion-1"
+          href="/"
+        >
+          <img
+            alt="rappi"
+            class="emotion-0"
+            src="https://images.rappi.com/web/logo-rappi-new.svg?e=webp"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          class="emotion-1"
+          href="/login"
+        >
+          <span
+            class="emotion-2"
+          >
+            Login
+          </span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</DocumentFragment>
+`;
